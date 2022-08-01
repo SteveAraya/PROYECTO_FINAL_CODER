@@ -1,11 +1,8 @@
-from email.message import EmailMessage
-from itertools import pairwise
-from mailbox import NoSuchMailboxError
 from django.db import models
 
 # Create your models here.
 
-class Vehiculo(models.Model):
+class Car(models.Model):
     tipo               = models.CharField(max_length=50)
     marca              = models.CharField(max_length=50)
     modelo             = models.CharField(max_length=50)
@@ -16,13 +13,13 @@ class Vehiculo(models.Model):
     cantidad_pasajeros = models.IntegerField()
     numero_puertas     = models.IntegerField()
 
-class Oficina(models.Model):
+class Office(models.Model):
     nombre    = models.CharField(max_length=200)
     ubicacion = models.CharField(max_length=500)
     telefono  = models.CharField(max_length=50)
     horario   = models.CharField(max_length=200)
 
-class Contacto(models.Model):
+class Contact(models.Model):
     asunto             = models.CharField(max_length=100)
     comentario         = models.CharField(max_length=500)
     nombre_completo    = models.CharField(max_length=100)

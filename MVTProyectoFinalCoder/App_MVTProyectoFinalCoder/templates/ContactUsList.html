@@ -1,0 +1,41 @@
+{% extends 'Father.html'%}
+
+{% load static %}
+
+{% block bloqueQueCambia %}
+
+<section class="features-icons bg-light text-center">
+
+  <div class="container">
+
+      <h1>Lista de Consultas</h1>
+
+      <table class="table">
+
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Asunto</th>
+            <th scope="col">Comentario</th>
+            <th scope="col">Nombre Completo</th>
+            <th scope="col">Correo Electronico</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for contact in ContactList %}
+          <tr>
+            <td>{{contact.asunto}}</td>
+            <td>{{contact.comentario}}</td>
+            <td>{{contact.nombre_completo}}</td>
+            <td>{{contact.correo_electronico}}</td>
+          </tr>
+        {% endfor %}
+          
+        </tbody>
+
+      </table>
+    
+  </div>
+
+</section>
+
+{% endblock bloqueQueCambia %}

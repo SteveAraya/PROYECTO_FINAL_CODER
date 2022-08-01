@@ -12,7 +12,7 @@
     Placa
     Annio
     TipoCaja (manual o automatico)
-    Combustible (Diesel, gasolina, gas, electrico)
+    Combustible (Diesel, gasolina, Gasolina, electrico)
     CantidadPasajeros
     NumeroPuertas
 

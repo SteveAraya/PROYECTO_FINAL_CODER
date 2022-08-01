@@ -1,0 +1,55 @@
+{% extends 'Father.html'%}
+
+{% load static %}
+
+{% block bloqueQueCambia %}
+
+<section class="features-icons bg-light text-center">
+
+    <div class="container">
+
+         <!-- Contact Section Form-->
+        <h1>Contactenos</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7" >
+                
+                <form  action="{% url 'Contact' %}" method="POST">{% csrf_token %} 
+
+                    <!-- Asunto input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="asunto" type="text"/>
+                        <label name="asunto">Asunto</label>
+                    </div>
+
+                    <!-- Comentario input-->
+                    <div class="form-floating mb-3">  
+                        <textarea class="form-control" name="comentario" type="text" style="height: 10rem"></textarea>
+                        <label name="comentario">Comentario</label>
+                    </div>
+
+                    <!-- Nombre Completo input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="nombre_completo" type="text" />
+                        <label name="nombre_completo">Nombre Completo</label>
+                    </div>
+
+                    <!-- Correo Electronico input-->
+                    <div class="form-floating mb-3">  
+                        <input class="form-control" name="correo_electronico" type="email"/>
+                        <label name="correo_electronico">Correo Electronico</label>
+                    </div>
+                    
+                    <!-- Submit Button-->
+                    <input class="btn btn-primary" id="submitButton" value="Enviar" type="submit">
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock bloqueQueCambia %}
