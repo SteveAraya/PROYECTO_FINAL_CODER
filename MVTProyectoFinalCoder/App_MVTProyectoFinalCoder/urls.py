@@ -6,6 +6,8 @@ from App_MVTProyectoFinalCoder.views import (
     ContactUsList,
     CarCreate, 
     CarList,
+    CarSearch,
+    Search,
     # CarUpdate,
     # CarDelete,
     OfficeCreate,
@@ -23,6 +25,8 @@ urlpatterns = [
 
     path('createCar/', CarCreate.as_view(), name="CarCreate"),
     path('carList/', CarList.as_view(), name="CarList"),
+    path('carSearch/', CarSearch, name="CarSearch"),
+    path('search/', Search, name="Search"),
     # path('carUpdate/', CarUpdate.as_view(), name="CarUpdate"),
     # path('carDelete/', CarDelete.as_view(), name="CarDelete"),
 

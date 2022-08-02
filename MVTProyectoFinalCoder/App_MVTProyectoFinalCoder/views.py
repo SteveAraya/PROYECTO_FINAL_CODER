@@ -64,6 +64,26 @@ class CarCreate(CreateView):
     ]
     success_url   = '/carList/' 
 
+def CarSearch(request):
+
+    return render(request, './Car/CarSearch.html')
+
+def Search(request):
+ 
+
+    if request.GET["carName"]:
+
+        carToSearch = request.GET["carName"]
+
+        carList = Car.objects.filter(marca__icontains=carToSearch)
+
+        return render(request, "ResultSearch.html", {"carList": carList, "marca": carToSearch})
+
+    else:
+
+        respuesta = "No enviaste datos"
+
+    return HttpResponse(respuesta)
 
 class CarUpdate(UpdateView):
 

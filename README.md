@@ -2,6 +2,7 @@
 
 ## Estudiantes:
     Adrian Figueroa.
+    Andrés Ordovini.
     Adelso Steve Araya Solórzano.
 
 ## Estructura del proyecto
@@ -43,3 +44,39 @@
 Cada reservación requiere agregar un vehiculo y una oficina en la cual el cliente
 va a realizar la reserva del vehiculo. Cada modelo de Reservacion requiere un VehiculoID y
 una OficinaID para poder crear la reserva.
+
+## Vista Home: 
+
+![Screenshot](./Evidencias/Home.png)
+
+## Crear Vehiculo: 
+
+![Screenshot](./Evidencias/CrearVehiculo.png)
+
+## Listar Vehiculos: 
+
+![Screenshot](./Evidencias/ListarVehiculos.png)
+
+## Buscar Vehiculo: 
+
+![Screenshot](./Evidencias/BuscarVehiculo.png)
+
+## Resultado Vehiculo: 
+
+![Screenshot](./Evidencias/ResultadoVehiculo.png)
+
+## Crear Oficina: 
+
+![Screenshot](./Evidencias/CrearOficina.png)
+
+## Listar Oficinas: 
+
+![Screenshot](./Evidencias/ListarOficina.png)
+
+## Contactenos: 
+
+![Screenshot](./Evidencias/Contactenos.png)
+
+## Listar Consultas: 
+
+![Screenshot](./Evidencias/ListarConsultas.png)
