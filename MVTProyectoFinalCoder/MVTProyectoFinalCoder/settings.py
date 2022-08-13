@@ -38,7 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'App_MVTProyectoFinalCoder',
-    
+    'App_Car',
+    'App_Office',
+    'App_Login',
+    'App_ContactUs',
+    'App_Register',
+    'App_Reservation',
+    'App_Blog',
 ]
 
 MIDDLEWARE = [
