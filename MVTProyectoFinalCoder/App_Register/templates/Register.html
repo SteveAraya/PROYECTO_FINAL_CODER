@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Proyecto Final CoderHouse</title>
+    <title>Register View</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
@@ -19,15 +19,76 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
         type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/stylesRegister.css' %}" rel="stylesheet" />
 </head>
 
 <body>
 
+    <section class="features-icons bg-light text-center">
 
-    <h1>Soy la vista de crear un nuevo registro</h1>
+        <div class="container">
 
+            <h1>Crear un Registro de Usuario</h1>
 
+            <div class="row justify-content-center">
+
+                <div class="col-lg-8 col-xl-7">
+
+                    <form action="{% url 'Register' %}" method="POST">{% csrf_token %}
+
+                        <!-- Usuario input-->
+                        <div class="form-floating mb-3">
+                            {{registerForm.username}}
+                            <label name="username">Usuario: </label>
+                        </div>
+
+                        <!-- Nombre input-->
+                        <div class="form-floating mb-3">
+                            {{registerForm.first_name}}
+                            <label name="first_name">Nombre: </label>
+                        </div>
+
+                        <!-- Apellidos input-->
+                        <div class="form-floating mb-3">
+                            {{registerForm.last_name}}
+                            <label name="last_name">Apellidos: </label>
+                        </div>
+
+                        <!-- Correo Electronico input-->
+                        <div class="form-floating mb-3">
+                            {{registerForm.email}}
+                            <label name="email">Correo Electrónico: </label>
+                        </div>
+
+                        <!-- Contraseña input-->
+                        <div class="form-floating mb-3">
+                            {{registerForm.password1}}
+                            <label name="password1">Contraseña: </label>
+                        </div>
+
+                        <!-- Contraseña Confirmar input-->
+                        <div class="form-floating mb-3">
+                            {{registerForm.password2}}
+                            <label name="password2">Confirmar Contraseña: </label>
+                        </div>
+
+                        <!-- Submit Button-->
+                        <input class="btn btn-primary" id="submitButton" value="Registrar" type="submit">
+
+                    </form>
+
+                    <div class="error-list-cont">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
