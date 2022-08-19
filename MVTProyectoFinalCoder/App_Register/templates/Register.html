@@ -1,46 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'Main.html' %}
 
-<head>
+{% block bloqueQueCambia %}
 
-    {% load static %}
+<div class="d-flex justify-content-center h-100">
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Proyecto Final CoderHouse</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"
-        type="text/css" />
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
-        type="text/css" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-</head>
+    <div class="user_card">
+        <div class="d-flex justify-content-center">
+            <h3 id="form-title">Crear un Registro de Usuario</h3>
+        </div>
+        <div class="d-flex justify-content-center form_container">
 
-<body>
+            <form action="{% url 'Register' %}" method="POST">{% csrf_token %}
 
+                <!-- Usuario input-->
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    {{registerForm.username}}
+                </div>
 
-    <h1>Soy la vista de crear un nuevo registro</h1>
+                <!-- Nombre input-->
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    {{registerForm.first_name}}
+                </div>
 
+                <!-- Apellidos input-->
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    {{registerForm.last_name}}
+                </div>
 
+                <!-- Correo Electronico input-->
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-mail-bulk"></i></span>
+                    </div>
+                    {{registerForm.email}}
+                </div>
 
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+                <!-- Contraseña input-->
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                    </div>
+                    {{registerForm.password1}}
+                </div>
 
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+                <!-- Contraseña Confirmar input-->
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                    </div>
+                    {{registerForm.password2}}
+                </div>
 
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-    <!-- * *                               SB Forms JS                               * *-->
-    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+                <!-- Submit Button-->
+                <div class="d-flex justify-content-center mt-4 login_container">
+                    <input class="btn main_btn" type="submit" value="Registrar">
+                </div>
 
-</body>
+            </form>
 
-</html>
+        </div>
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="container-fluid p-0">
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                {{ message }}
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock bloqueQueCambia %}
