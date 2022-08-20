@@ -12,6 +12,9 @@ from App_MVTProyectoFinalCoder.forms  import CarForm, OfficeForm, ContactUsForm
 def Home(self):
     return render(self, "Home.html")
 
+def AdminSite(self):
+    return render(self, "Admin.html")
+
 #------------------- ContactUS VIEWS -------------------#
 def ContactUS(self):
     

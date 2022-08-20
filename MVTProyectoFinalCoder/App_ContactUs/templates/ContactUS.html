@@ -1,4 +1,4 @@
-{% extends 'Father.html'%}
+{% extends 'Main.html'%}
 
 {% load static %}
 
@@ -14,7 +14,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-xl-7" >
                 
-                <form  action="{% url 'Contact' %}" method="POST">{% csrf_token %} 
+                <form  action="{% url 'SendMessage' %}" method="POST">{% csrf_token %} 
 
                     <!-- Asunto input-->
                     <div class="form-floating mb-3">
