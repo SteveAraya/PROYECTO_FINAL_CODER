@@ -8,34 +8,55 @@ html {
   background: #ffffff !important;
 }
 
+/* navbar */
 .navbar{
-  height: 6%;
   background: #1b201f !important;
   border-radius: 0px !important;
   margin-bottom: 0px !important;
 }
 
 .navbar-brand {
-  background: #1c8fb5 !important;
-  padding-left: 20px;
-  padding-right: 20px;
-  border-radius: 5px;
-}
-
-.navbar-brand:hover {
-  background: #ffffff!important;
   color: #1c8fb5 !important;
 }
 
-.container-body {
-  height: 88%;
+.options-txt{
+  color: white !important;
 }
 
-.container-body {
-  height: 88%;
+.a-txt-nav:hover {
+  color: #1c8fb5  !important;
+  background: white !important;
 }
 
-.user_card {
+.dropdown-toggle:hover{
+  color: #1c8fb5  !important;
+  background: white !important;
+}
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+  color: #1c8fb5 !important;
+  background-color: white !important;
+}
+
+.dropdown-menu {
+  background: #1b201f !important;
+}
+
+.dropdown-menu>li>a {
+  color: white !important;
+  background: #1b201f !important;
+}
+
+.dropdown-menu>li>a:hover {
+  background: #1c8fb5 !important;
+}
+/* end navbar */
+
+.container-body {
+  height: 89%;
+}
+
+/* .user_card {
   width: 750px;
   margin-top: auto;
   margin-bottom: auto;
@@ -49,68 +70,71 @@ html {
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
-}
+} */
 
-.login_card {
+/* .login_card {
   width: 350px !important;
-}
+} */
 
-.form_container {
+/* .form_container {
   margin-top: 40px;
   margin-bottom: 40px;
-}
+} */
 
-#form-title {
+/* #form-title {
   margin-top: 20px;
   color: #fff;
-}
+} */
 
-.main_btn {
+/* .main_btn {
   width: 50% !important;
   background: #1c8fb5 !important;
   color: white !important;
-}
+} */
 
-.main_btn:hover {
+/* .main_btn:hover {
   background: #fff !important;
   color: #1c8fb5 !important;
-}
+} */
 
-.main_btn:focus {
+/* .main_btn:focus {
   box-shadow: none !important;
   outline: 0px !important;
-}
+} */
 
-.login_container {
+/* .login_container {
   padding: 0 0rem;
-}
+} */
 
-.input-group-text {
+/* .input-group-text {
   background: #1c8fb5 !important;
   color: white !important;
   border: 0 !important;
   border-radius: 0.25rem 0 0 0.25rem !important;
-}
+} */
 
-.input_user,
+/* .input_user,
 .input_pass:focus {
   box-shadow: none !important;
   outline: 0px !important;
-}
+} */
 
-#messages {
+/* #messages {
   background-color: grey;
   color: #fff;
   padding: 10px;
   margin-top: 10px;
-}
-
-/* footer.footer {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
 } */
+
+
+/* footer */
+.footer-text {
+  color: white;
+  padding-top: 20px;
+}
 
 .bg-dark {
   height: 6%;
   background: #1b201f !important;
 }
+/* end footer */
