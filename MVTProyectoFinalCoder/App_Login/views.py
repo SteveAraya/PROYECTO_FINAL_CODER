@@ -29,7 +29,7 @@ def Login(request):
 
                 login(request, user)
 
-                return redirect('/')
+                return redirect('/contact-us/contactList')
 
             else:
 

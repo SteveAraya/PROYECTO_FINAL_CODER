@@ -2,11 +2,6 @@ from django.http          import HttpResponse
 from django.shortcuts     import render
 from django.views.generic import ListView, DeleteView, CreateView, UpdateView, DetailView
 
-
-from App_MVTProyectoFinalCoder.models import Contact, Car, Office
-from App_MVTProyectoFinalCoder.forms  import CarForm, OfficeForm, ContactUsForm
-
-
 # Create your views here.
 
 def Home(self):
@@ -15,121 +10,99 @@ def Home(self):
 def AdminSite(self):
     return render(self, "Admin.html")
 
-#------------------- ContactUS VIEWS -------------------#
-def ContactUS(self):
-    
-    if (self.method == 'POST'):
+# class ContactUsList(ListView):
 
-        contactForm = ContactUsForm(self.POST)
-
-        if contactForm.is_valid():
-            data    = contactForm.cleaned_data
-            contact = Contact(
-                asunto=data['asunto'], 
-                comentario=data['comentario'], 
-                nombre_completo=data['nombre_completo'], 
-                correo_electronico=data['correo_electronico']
-            )
-            print(contact)
-            contact.save()
-            return render(self,'Home.html')
-
-    else:
-        return render(self, "ContactUs.html")
-
-class ContactUsList(ListView):
-
-    model               = Contact
-    template_name       = './ContactUsList.html'
-    context_object_name = 'ContactList'
+#     model               = Contact
+#     template_name       = './ContactUsList.html'
+#     context_object_name = 'ContactList'
 
 #------------------- CAR VIEWS -------------------#
-class CarList(ListView):
+# class CarList(ListView):
 
-    model               = Car
-    template_name       = './Car/CarList.html'
-    context_object_name = 'CarList'
+#     model               = Car
+#     template_name       = './Car/CarList.html'
+#     context_object_name = 'CarList'
 
-class CarCreate(CreateView):
-    model         = Car
-    template_name = './Car/CarCreate.html'
-    form_class: CarForm
-    fields        = [ 
-        "tipo", 
-        "marca", 
-        "modelo", 
-        "placa", 
-        "annio", 
-        "tipo_caja",
-        "combustible", 
-        "cantidad_pasajeros",
-        "numero_puertas"
-    ]
-    success_url   = '/carList/' 
+# class CarCreate(CreateView):
+#     model         = Car
+#     template_name = './Car/CarCreate.html'
+#     form_class: CarForm
+#     fields        = [ 
+#         "tipo", 
+#         "marca", 
+#         "modelo", 
+#         "placa", 
+#         "annio", 
+#         "tipo_caja",
+#         "combustible", 
+#         "cantidad_pasajeros",
+#         "numero_puertas"
+#     ]
+#     success_url   = '/carList/' 
 
-def CarSearch(request):
+# def CarSearch(request):
 
-    return render(request, './Car/CarSearch.html')
+#     return render(request, './Car/CarSearch.html')
 
-def Search(request):
+# def Search(request):
  
 
-    if request.GET["carName"]:
+#     if request.GET["carName"]:
 
-        carToSearch = request.GET["carName"]
+#         carToSearch = request.GET["carName"]
 
-        carList = Car.objects.filter(marca__icontains=carToSearch)
+#         carList = Car.objects.filter(marca__icontains=carToSearch)
 
-        return render(request, "ResultSearch.html", {"carList": carList, "marca": carToSearch})
+#         return render(request, "ResultSearch.html", {"carList": carList, "marca": carToSearch})
 
-    else:
+#     else:
 
-        respuesta = "No enviaste datos"
+#         respuesta = "No enviaste datos"
 
-    return HttpResponse(respuesta)
+#     return HttpResponse(respuesta)
 
-class CarUpdate(UpdateView):
+# class CarUpdate(UpdateView):
 
-    model = Car
-    template_name = './Car/car_update.html'
-    fields = ('__all__')
-    success_url = '/carList/'
+#     model = Car
+#     template_name = './Car/car_update.html'
+#     fields = ('__all__')
+#     success_url = '/carList/'
 
-class CarDelete(DeleteView):
+# class CarDelete(DeleteView):
 
-    model = Car
-    template_name = './Car/car_delete.html'
-    success_url = '/carList/'
+#     model = Car
+#     template_name = './Car/car_delete.html'
+#     success_url = '/carList/'
 
 #------------------- OFFICE VIEWS -------------------#
-class OfficeList(ListView):
+# class OfficeList(ListView):
 
-    model               = Office
-    template_name       = './Office/OfficeList.html'
-    context_object_name = 'OfficeList'
+#     model               = Office
+#     template_name       = './Office/OfficeList.html'
+#     context_object_name = 'OfficeList'
 
-class OfficeCreate(CreateView):
-    model         = Office
-    template_name = './Office/OfficeCreate.html'
-    form_class: OfficeForm
-    fields        = [ 
-        "nombre", 
-        "ubicacion", 
-        "telefono", 
-        "horario"
-    ]
-    success_url   = '/OfficeList/' 
+# class OfficeCreate(CreateView):
+#     model         = Office
+#     template_name = './Office/OfficeCreate.html'
+#     form_class: OfficeForm
+#     fields        = [ 
+#         "nombre", 
+#         "ubicacion", 
+#         "telefono", 
+#         "horario"
+#     ]
+#     success_url   = '/OfficeList/' 
 
 
-class OfficeUpdate(UpdateView):
+# class OfficeUpdate(UpdateView):
 
-    model = Office
-    template_name = './Office/Office_update.html'
-    fields = ('__all__')
-    success_url = '/OfficeList/'
+#     model = Office
+#     template_name = './Office/Office_update.html'
+#     fields = ('__all__')
+#     success_url = '/OfficeList/'
 
-class OfficeDelete(DeleteView):
+# class OfficeDelete(DeleteView):
 
-    model = Office
-    template_name = './Office/Office_delete.html'
-    success_url = '/OfficeList/'
+#     model = Office
+#     template_name = './Office/Office_delete.html'
+#     success_url = '/OfficeList/'

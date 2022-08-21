@@ -4,52 +4,66 @@
 
 {% block bloqueQueCambia %}
 
-<section class="features-icons bg-light text-center">
+<style>
 
-    <div class="container">
+.form_container{
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+}
+</style>
 
-         <!-- Contact Section Form-->
-        <h1>Contactenos</h1>
+<div class="container container-body">
+    <div class="d-flex justify-content-center h-100">
 
-        <div class="row justify-content-center">
-            <div class="col-lg-8 col-xl-7" >
-                
-                <form  action="{% url 'SendMessage' %}" method="POST">{% csrf_token %} 
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+                <h3 id="form-title">CONTACTENOS</h3>
+            </div>
+            <div class="justify-content-center form_container">
+
+                <form action="{% url 'SendMessage' %}" method="POST">{% csrf_token %}
 
                     <!-- Asunto input-->
                     <div class="form-floating mb-3">
-                        <input class="form-control" name="asunto" type="text"/>
-                        <label name="asunto">Asunto</label>
+                        <input class="form-control" name="asunto" type="text" placeholder="Asunto" required/>
                     </div>
 
                     <!-- Comentario input-->
-                    <div class="form-floating mb-3">  
-                        <textarea class="form-control" name="comentario" type="text" style="height: 10rem"></textarea>
-                        <label name="comentario">Comentario</label>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" name="comentario" type="text" style="height: 10rem" placeholder="Comentario" required></textarea>
                     </div>
 
                     <!-- Nombre Completo input-->
                     <div class="form-floating mb-3">
-                        <input class="form-control" name="nombre_completo" type="text" />
-                        <label name="nombre_completo">Nombre Completo</label>
+                        <input class="form-control" name="nombre_completo" type="text" placeholder="Nombre Completo" required/>
                     </div>
 
                     <!-- Correo Electronico input-->
-                    <div class="form-floating mb-3">  
-                        <input class="form-control" name="correo_electronico" type="email"/>
-                        <label name="correo_electronico">Correo Electronico</label>
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="correo_electronico" type="email" placeholder="Correo Electronico" required/>
                     </div>
-                    
+
                     <!-- Submit Button-->
-                    <input class="btn btn-primary" id="submitButton" value="Enviar" type="submit">
+                    <div class="d-flex justify-content-center mt-4 login_container">
+                        <input class="btn main_btn" id="submitButton" type="submit" value="Enviar">
+                    </div>
+                    <!-- <input class="btn btn-primary" id="submitButton" value="Enviar" type="submit"> -->
                 </form>
 
             </div>
 
+            {% if messages %}
+            {% for message in messages %}
+            <div class="container-fluid p-0">
+                <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                    {{ message }}
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+
         </div>
 
     </div>
-
-</section>
-
+</div>
 {% endblock bloqueQueCambia %}

@@ -2,17 +2,19 @@ from django.http          import HttpResponse
 from django.shortcuts     import render
 from django.views.generic import ListView, DeleteView, CreateView, UpdateView, DetailView
 
-from App_MVTProyectoFinalCoder.models import Contact
-from App_MVTProyectoFinalCoder.forms  import ContactUsForm
+from App_ContactUs.models import Contact
+from App_ContactUs.forms  import ContactUsForm
+
+from django.contrib import messages
 
 # Create your views here.
 
 #------------------- ContactUS VIEWS -------------------#
-def SendMessage(self):
+def ContactUS(request):
     
-    if (self.method == 'POST'):
+    if (request.method == 'POST'):
 
-        contactForm = ContactUsForm(self.POST)
+        contactForm = ContactUsForm(request.POST)
 
         if contactForm.is_valid():
             data    = contactForm.cleaned_data
@@ -22,15 +24,25 @@ def SendMessage(self):
                 nombre_completo=data['nombre_completo'], 
                 correo_electronico=data['correo_electronico']
             )
-            print(contact)
             contact.save()
-            return render(self,'ContactUS.html')
+            messages.success(request, 'El mensaje fue enviado con éxito!')
+            return render(request,'ContactUS.html')
+
+        else:
+            for message in contactForm.errors.values():
+                messages.warning(request, message)
 
     else:
-        return render(self, "ContactUS.html")
+        return render(request, "ContactUS.html")
 
 class ContactUsList(ListView):
 
     model               = Contact
     template_name       = './ContactUsList.html'
     context_object_name = 'ContactList'
+
+class ContactUsDelete(DeleteView):
+
+    model         = Contact
+    template_name = 'ContactUsDelete.html'
+    success_url   = '/contact-us/contactList/'
