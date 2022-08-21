@@ -5,6 +5,9 @@ from django.views.generic import ListView, DeleteView, CreateView, UpdateView, D
 from App_ContactUs.models import Contact
 from App_ContactUs.forms  import ContactUsForm
 
+from django.utils.decorators        import method_decorator
+from django.contrib.auth.decorators import login_required
+
 from django.contrib import messages
 
 # Create your views here.
@@ -35,12 +38,14 @@ def ContactUS(request):
     else:
         return render(request, "ContactUS.html")
 
+@method_decorator(login_required, name='dispatch')
 class ContactUsList(ListView):
 
     model               = Contact
     template_name       = './ContactUsList.html'
     context_object_name = 'ContactList'
 
+@method_decorator(login_required, name='dispatch')
 class ContactUsDelete(DeleteView):
 
     model         = Contact

@@ -56,7 +56,9 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
+                
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ user.username }}</a></li>
+                <li><a href="{% url 'Logout' %}"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
             </ul>
         </div>
     </nav>

@@ -1,6 +1,8 @@
 from django.http          import HttpResponse
-from django.shortcuts     import render
 from django.views.generic import ListView, DeleteView, CreateView, UpdateView, DetailView
+from django.shortcuts     import  render, redirect
+from django.contrib.auth  import logout
+from django.contrib       import messages
 
 # Create your views here.
 
@@ -9,6 +11,11 @@ def Home(self):
 
 def AdminSite(self):
     return render(self, "Admin.html")
+
+def Logout(request):
+    logout(request)
+    messages.info(request, "Logged out successfully!")
+    return redirect('/login')
 
 # class ContactUsList(ListView):
 
