@@ -114,3 +114,41 @@ html {
   height: 6%;
   background: #1b201f !important;
 }
+
+.cars-list{
+  display: flex !important;
+  gap: 1rem !important;
+  margin: 1rem !important;
+  flex-wrap: nowrap !important;
+  justify-content: space-evenly !important;
+}
+
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contenido-card{
+  display: flex;
+  padding: 0;
+  margin: 0;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+} 
+
+.card-body{
+  display: flex !important;
+  padding: 0;
+  margin: 0;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.card{
+  display: flex !important;
+  gap: 30px !important;
+  flex-wrap: wrap !important;
+} 

@@ -1,0 +1,83 @@
+{% extends 'Main.html' %}
+
+{% load static %}
+
+{% block bloqueQueCambia %}
+
+<h2><span>Nuestros Vehículo</span></h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 search">
+            <form method="GET">
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                        <input type="text" class="form-control" placeholder="Ingrese marca o modelo del vehículo..." name="buscar" value="{{request.GET.buscar}}">
+                        <span class="input-group-list">
+                            <i class="icon icon-search"></i>
+                            <button type="submit" class="btn btn-info">Buscar</button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<section class="car-list">
+        {% for car in cars %}
+        
+             <div class="card" style="width: 18rem">
+                <div class="card-body">
+                <h5 class="card-title">{{car.categoria}}</h5>
+                <h6 class="card-subtitle">{{car.marca}} {{car.modelo}}</h6>
+                <img src="{{car.imagen.url}}" class="card-img-top" alt="imagen-auto" height="190px">
+                <div class="contenido-card">
+                    <ul>
+                        <li><p class="card-text">{{car.tipo_caja}}</p></li>
+                        <li><p class="card-text">{{car.cantidad_pasajeros}}</p></li>
+                        <li><p class="card-text">{{car.numero_puertas}}</p></li>
+                    </ul>
+                
+                    <form action="{% url 'CarDetail' car.id %}" method="GET">
+                        <button type="submit" class="btn btn-ligh">Ver detalles</button>
+                    </form>
+        
+                </div>
+                </div>
+            </div>
+        
+    {% endfor %}
+</section>
+
+<div class="row mt-3 justify-content-center" style="margin:auto; width:auto">
+    <nav>
+        <ul class="pagination">
+            {% if cars.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="{% if busqueda %} ?buscar={{ busqueda }}&page=1 {% else %} ?page=1 {% endif %}">Primera</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="{% if busqueda %} ?buscar={{ busqueda }}&page={{ cars.previous_page_number }} {% else %} ?page={{ cars.previous_page_number }} {% endif %}">&laquo;</a>
+                </li>
+            {% endif %}
+            
+            {% for pagina in paginas %}
+            
+                <li class="page-item{% if pagina_actual == pagina %} active {% endif %}">
+                    <a class="page-link" href="{% if busqueda %} ?buscar={{ busqueda }}&page={{ pagina }} {% else %} ?page={{ pagina }} {% endif %}">{{ pagina }}</a>
+                </li>
+            {% endfor %}
+
+            {% if cars.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="{% if busqueda %} ?buscar={{ busqueda }}&page={{ cars.next_page_number }} {% else %} ?page={{ cars.next_page_number }} {% endif %}">&raquo;</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="{% if busqueda %} ?buscar={{ busqueda }}&page={{ cars.paginator.num_pages }} {% else %} ?page={{ cars.paginator.num_pages }} {% endif %}">Última</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
+
+{% endblock bloqueQueCambia %}

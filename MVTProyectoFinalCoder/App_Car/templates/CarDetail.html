@@ -1,0 +1,29 @@
+{% extends 'Main.html' %}
+
+{% load static %}
+
+{% block bloqueQueCambia %}
+
+<section class="cars-list">
+    <h2>Vista de detalle de autos</h2>
+    
+ 
+ {% for car in cars %}
+    
+ 
+    <h3>{{car.marca}} {{car.modelo}} cuenta con las siguientes características:</h3>
+        <ul>
+            <li>Caja de velocidades: {{car.tipo_caja}}</li>
+            <li>Combustible: {{car.combustible}}</li>
+             {% if car.aacond %} <li>Cuenta con equipo de Aire Acondicionado</li> {% endif %} 
+             {% if car.radio %}<li>Equipo de radio estereo AM/FM </li> {% endif %}
+             {% if car.bluetoothe %}<li>Cuenta con conectividad Bluetooth</li> {% endif %}
+             {% if car.cierrepuertas %}<li>Cierre de puertas centralizado</li> {% endif %} 
+             {% if car.control_crucero %}<li>Control de velocidad crucero </li>{% endif %} 
+        </ul>
+        
+
+        {% endfor %}      
+</section>
+
+{% endblock bloqueQueCambia %}

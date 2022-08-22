@@ -1,0 +1,173 @@
+{% extends 'Main.html' %}
+
+{% block bloqueQueCambia %}
+
+<section class="features-icons bg-light text-center">
+
+    <div class="container">
+
+        <h1>Editar Vehiculo</h1>
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8 col-xl-7" >
+                
+                <form method="POST" enctype="multipart/form-data">{% csrf_token %} 
+
+                   <!-- Tipo input-->
+                   <div class="form-floating mb-3">
+                    <select class="form-select" name="categoria" aria-label="Default select example">
+                        <option selected>Seleccione una categoria</option>
+                        <option value="Coche">Coche</option>
+                        <option value="Vehiculo de carga">Vehiculo de carga</option>
+                        <option value="Vehiculo utilitario">Vehiculo utilitario</option>
+                        <option value="Vehiculo de transporte de pasajeros">Vehiculo de transporte de pasajeros</option>
+                    </select>
+                    <!-- {{carformulario.categoria}} -->
+                </div>
+
+                <!-- Tipo input-->
+                <div class="form-floating mb-3">
+                    <select class="form-select" name="tipo" aria-label="Default select example">
+                        <option selected>Seleccione un tipo</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="Compacto">Compacto</option>
+                        <option value="Peugeot">Camioneta</option>
+                        <option value="Furgon">Furgon</option>
+                        <option value="SUV">SUV</option>
+                        <option value="Van">Van</option>
+                    </select>
+                    <!-- {{carformulario.tipo}} -->
+                </div>
+
+                <!-- Marca input-->
+                <div class="form-floating mb-3">
+                    <select class="form-select" name="marca" selected="{{car.marca}}" aria-label="Default select example">
+                        <option selected>Seleccione una marca</option>
+                        <option value="Ford">Ford</option>
+                        <option value="Chevrolet">Chevrolet</option>
+                        <option value="Peugeot">Peugeot</option>
+                        <option value="Citroen">Citroen</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Suzuki">Suzuki</option>
+                        <option value="Nissan">Nissan</option>
+                        <option value="Volswagen">Volswagen</option>
+                    </select>
+                    <!-- {{carformulario.marca}}  -->
+                </div>
+
+                <!-- Modelo input-->
+                <div class="form-floating mb-3">  
+                    <input class="form-control" name="modelo" type="text" value="{{car.modelo}}" required>
+                    <label name="modelo">Modelo</label>
+                </div>
+
+                <!-- Placa input-->
+                <div class="form-floating mb-3">
+                    <input class="form-control" name="placa" value="{{car.placa}}" type="text">
+                    <label name="placa">Placa</label>
+                    <!-- {{carformulario.placa}} -->
+                </div>
+
+                <!-- Año input-->
+                <div class="form-floating mb-3">
+                    <input class="form-control" name="annio" value="{{car.annio}}" type="number" />
+                    <label name="annio">Año</label>
+                    <!-- {{carformulario.annio}} -->
+                </div>
+
+                <!-- Tipo de Caja input-->
+                <div class="form-floating mb-3">
+                    <select class="form-select" name="tipo_caja" aria-label="Default select example">
+                        <option selected>Seleccione el tipo de caja</option>
+                        <option value="Manual">Manual</option>
+                        <option value="Automatica">Automatica</option>
+                    </select>
+                    <!-- {{carformulario.tipo_caja}} -->
+                </div>
+
+                <!-- Combustible input-->
+                <div class="form-floating mb-3">
+                    <select class="form-select" name="combustible" aria-label="Default select example">
+                        <option selected>Seleccione el tipo de combustible</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Gasolina">Gasolina</option>
+                        <option value="Gas">Gas</option>
+                        <option value="Electrico">Electrico</option>
+                        <option value="Hibrido">Hibrido</option>
+                    </select>
+                    <!-- {{carformulario.combustible}} -->
+                </div>
+
+                <!-- Cantidad Pasajeros input-->
+                <div class="form-floating mb-3">
+                    <input class="form-control" name="cantidad_pasajeros" value="{{car.cantidad_pasajeros}}" type="number">
+                    <label name="cantidad_pasajeros">Cantidad Pasajeros</label>
+                    <!-- {{carformulario.cantidad_pasajeros}}
+                </div> -->
+
+                <!-- Numero Puertas input-->
+                <div class="form-floating mb-3">
+                    <input class="form-control" name="numero_puertas" value="{{car.numero_puertas}}" type="number">
+                    <label name="numero_puertas">Numero Puertas</label>
+                    <!-- {{carformulario.numero_puertas}} -->
+                </div>
+                
+                <!-- Control Crucero-->
+                <div class="form-floating mb-3">
+                    <input class="form-control" name="control_crucero" value="{{car.control_crucero}}" type="checkbox">
+                    <label name="control_crucero">Control de velocidad crucero</label>
+                    <!-- {{carformulario.control_crucero}} -->
+                </div>
+
+                <!-- Radio AM/FM-->
+                <div class="form-floating mb-3">
+                    <input class="form-control" name="radio" value="{{car.radio}}" type="checkbox">
+                    <label name="radio">Sistema de radio AM/FM</label>
+                    <!-- {{carformulario.radio}} -->
+                </div>
+                
+                <!-- Aire Acondicionado-->
+                <div class="form-floating mb-3">
+                    <input class="form-control" name="aacond" value="{{car.aacond}}" type="checkbox">
+                    <label name="aacond">Aire Acondicionado</label>
+                    <!-- {{carformulario.aacond}} -->
+                </div>
+                
+                <!-- Bluetooth-->
+                <div class="form-floating mb-3">
+                    <input class="form-control" name="bluetooth" value="{{car.bluetooth}}" type="checkbox">
+                    <label name="bluetooth">Conectividad Bluetooth</label>
+                    <!-- {{carformulario.bluetooth}} -->
+                </div>
+
+                <!-- Cierre centralizado de puertas-->
+                <div class="form-floating mb-3">
+                    <input class="form-control" name="cierrepuertas" value="{{car.cierrepuertas}}" type="checkbox">
+                    <label name="cierrepuertas">Cierre centralizado de puertas</label>
+                    <!-- {{carformulario.cierrepuertas}} -->
+                </div>
+
+                <!-- Imagen-->
+                <div class="form-floating mb-3">
+                    <input class="form-control" name="imagen" value="{{car.imagen}}" type="file">
+                    <label name="imagen">Imagen del vehículo</label>
+                </div>
+
+                    <!-- Submit Button-->
+                <input class="btn btn-primary" id="submitButton" type="submit" value="Editar" />
+                </form>
+            </div>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="container-fluid p-0">
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                {{ message }}
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}        
+        </div>
+    </div>
+</section>
+{% endblock bloqueQueCambia %}

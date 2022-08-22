@@ -1,0 +1,87 @@
+{% extends 'Admin.html'%}
+
+{% load static %}
+
+{% block bloqueQueCambia %}
+
+<div class="container container-body">
+  <div class="d-flex justify-content-center h-100">
+
+    <div class="user_card">
+      <div class="table-title">
+        <h3 id="form-title">LISTA DE VEHÍCULOS</h3>
+      </div>
+      <div class="justify-content-center form_container table-responsive">
+
+        <table class="table table-fixed">
+
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Categoria</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Marca</th>
+              <th scope="col">Modelo</th>
+              <th scope="col">Placa</th>
+              <th scope="col">Año</th>
+              <th scope="col">Tipo de caja</th>
+              <th scope="col">Combustible</th>
+              <th scope="col">Cantidad de pasajeros</th>
+              <th scope="col">Número de puertas</th>
+              <th scope="col">Control de velocidad crucero</th>
+              <th scope="col">Radio AM/FM</th>
+              <th scope="col">Bluetooth</th>
+              <th scope="col">Aire Acondicionado</th>
+              <th scope="col">Cierre de puertas centralizado</th>
+              <th scope="col">Imagen</th>
+              <th scope="col">Eliminar</th>
+              <th scope="col">Editar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for car in cars %}
+            <tr>
+              <td>{{car.categoria}}</td>
+              <td>{{car.tipo}}</td>
+              <td>{{car.marca}}</td>
+              <td>{{car.modelo}}</td>
+              <td>{{car.placa}}</td>
+              <td>{{car.annio}}</td>
+              <td>{{car.tipo_caja}}</td>
+              <td>{{car.combustible}}</td>
+              <td>{{car.cantidad_pasajeros}}</td>
+              <td>{{car.numero_puertas}}</td>
+              <td>{{car.control_crucero}}</td>
+              <td>{{car.radio}}</td>
+              <td>{{car.aacond}}</td>
+              <td>{{car.bluetooth}}</td>
+              <td>{{car.cierrepuertas}}</td>
+              <td>{{car.imagen}}</td>
+              <td class="text-center">
+                  <a href="{% url 'CarDelete' car.id %}">
+                    <button class="btn btn-delete">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </a>
+              </td>
+              <td class="text-center">
+                <a href="{% url 'CarEdit' car.id %}">
+                  <button class="btn btn-delete">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </a>
+            </td>
+            </tr>
+            {% endfor %}
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock bloqueQueCambia %}
