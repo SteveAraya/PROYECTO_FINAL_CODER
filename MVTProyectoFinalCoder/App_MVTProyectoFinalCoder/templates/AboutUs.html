@@ -26,6 +26,10 @@
         color: #1b201f;
     }
 
+    .title-history {
+        color: #1c8fb5 !important;
+    }
+
     .title-card {
         color: white;
     }
@@ -83,6 +87,11 @@
         margin-bottom: 15px;
     }
 
+    .post-histoy {
+        text-transform: none !important;
+        color: white !important;
+    }
+
     .our-team .social {
         padding: 0;
         margin: 0;
@@ -116,6 +125,21 @@
             margin-bottom: 30px;
         }
     }
+
+    .btn-go-back {
+        background-color: #1c8fb5;
+        color: white;
+    }
+
+    .btn-go-back:hover {
+        background-color: white;
+        color: #1c8fb5;
+    }
+
+    .history{
+        height: 552px !important;
+    }
+
 </style>
 
 <div class="container container-body">
@@ -136,33 +160,88 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
                         <div class="our-team">
+
+                            {% if history_adrian %}
+                            <div class="history">
+                                <h3 class="title-card title-history">Adrían Figueroa</h3>
+                                <span class="post text-justify post-histoy">Mi nombre es Steve Araya, resido en Costa
+                                    Rica,
+                                    soy un apasionado de los deportes tales como; correr, andar en bicicleta
+                                    y realizar senderismo. Uno de mis Hobbies es la música, suelo tocar guitarra
+                                    y batería para desestresarme. Una de las cosas que más me gusta es ir al gimnasio,
+                                    es un lugar en el cual me ayuda a quitar los problemas del trabajo y despejar mi
+                                    mente.
+                                    Me encanta pasar tiempo con mi familia y amigos. Soy una persona apasionada por la
+                                    tecnología,
+                                    anteriormente era Full Stack Developer, pero ahora me dedico a el área de QA, en
+                                    este momento
+                                    llevo el role de Quality Assurance Engineer II.
+                                </span>
+                                <form method='get' action='#'>
+                                    <input type="submit" value="Regresar" name="close_history_adrian" class="btn btn-go-back"/>
+                                </form>
+                            </div>
+                            {% elif history_adrian == False %}
                             <div class="pic">
                                 <img src="../static/assets/img/Adrian.jpeg">
                             </div>
                             <h3 class="title-card">Adrían Figueroa</h3>
                             <span class="post">Full Stack Developer</span>
                             <span class="post">País: Argentina</span>
+                            <form method='get' action='#'>
+                                <input type="submit" value="Ver Historia" name="view_history_adrian" class="btn btn-go-back"/>
+                            </form>
+                            <br>
                             <ul class="social">
                                 <li>
-                                    <a href="https://www.linkedin.com/in/adrianfigueroa343467198/" class="fab fa-linkedin"></a>
+                                    <a href="https://www.linkedin.com/in/adrianfigueroa343467198/"
+                                        class="fab fa-linkedin"></a>
                                 </li>
                             </ul>
+                            {% endif %}
                         </div>
                     </div>
 
                     <div class="col-md-6 col-sm-6">
                         <div class="our-team">
+                            {% if history_steve %}
+                            <div class="history">
+                                <h3 class="title-card title-history">Steve Araya Solórzano</h3>
+                                <span class="post text-justify post-histoy">Mi nombre es Steve Araya, resido en Costa
+                                    Rica,
+                                    soy un apasionado de los deportes tales como; correr, andar en bicicleta
+                                    y realizar senderismo. Uno de mis Hobbies es la música, suelo tocar guitarra
+                                    y batería para desestresarme. Una de las cosas que más me gusta es ir al gimnasio,
+                                    es un lugar en el cual me ayuda a quitar los problemas del trabajo y despejar mi
+                                    mente.
+                                    Me encanta pasar tiempo con mi familia y amigos. Soy una persona apasionada por la
+                                    tecnología,
+                                    anteriormente era Full Stack Developer, pero ahora me dedico a el área de QA, en
+                                    este momento
+                                    llevo el role de Quality Assurance Engineer II.
+                                </span>
+                                <form method='get' action='#'>
+                                    <input type="submit" value="Regresar" name="close_history_steve" class="btn btn-go-back"/>
+                                </form>
+                            </div>
+                            {% elif history_steve == False %}
                             <div class="pic">
                                 <img src="../static/assets/img/Steve.JPG">
                             </div>
                             <h3 class="title-card">Steve Araya Solórzano</h3>
                             <span class="post">QA Automation Engineer</span>
                             <span class="post">País: Costa Rica</span>
+                            <form method='get' action='#'>
+                                <input type="submit" value="Ver Historia" name="view_history_steve" class="btn btn-go-back"/>
+                            </form>
+                            <br>
                             <ul class="social">
                                 <li>
-                                    <a href="https://www.linkedin.com/in/adelso-steve-araya-sol%C3%B3rzano-9661991a6/" class="fab fa-linkedin"></a>
+                                    <a href="https://www.linkedin.com/in/adelso-steve-araya-sol%C3%B3rzano-9661991a6/"
+                                        class="fab fa-linkedin"></a>
                                 </li>
                             </ul>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
