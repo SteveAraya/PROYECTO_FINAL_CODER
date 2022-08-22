@@ -1,0 +1,174 @@
+{% extends 'Main.html' %}
+
+{% load static %}
+
+{% block bloqueQueCambia %}
+
+<style>
+    .about-us-card {
+        width: 750px;
+        margin-top: auto;
+        margin-bottom: auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    a:link,
+    a:visited,
+    a:active {
+        text-decoration: none;
+    }
+
+    .title {
+        color: #1b201f;
+    }
+
+    .title-card {
+        color: white;
+    }
+
+    .our-team {
+        padding: 20px 15px 30px;
+        background: #1b201f;
+        border-radius: 15px;
+        text-align: center;
+        border: 1px solid #1c8fb5;
+
+    }
+
+    .our-team:hover {
+        transition: .5s;
+        box-shadow: 0px 1px 5px 0px #d1d1d1;
+    }
+
+    .our-team .pic {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        background: white;
+        padding: 5px;
+        margin-bottom: 25px;
+        transition: all 0.5s ease 0s;
+        border-radius: 50%;
+    }
+
+    .our-team:hover .pic {
+        background: #1c8fb5;
+        border-radius: 50%;
+    }
+
+    .pic img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+    }
+
+    .our-team .title {
+        display: block;
+        font-size: 20px;
+        font-weight: 600;
+        color: #fff;
+        text-transform: uppercase;
+        margin: 0 0 7px 0;
+    }
+
+    .our-team .post {
+        display: block;
+        font-size: 15px;
+        color: #1c8fb5;
+        text-transform: capitalize;
+        margin-bottom: 15px;
+    }
+
+    .our-team .social {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .our-team .social li {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .our-team .social li a {
+        display: block;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 50%;
+        font-size: 15px;
+        color: #1c8fb5;
+        border: 1px solid #1c8fb5;
+        transition: all 0.5s ease 0s;
+    }
+
+    .our-team:hover .social li a {
+        background: #1c8fb5;
+        color: white;
+    }
+
+    @media only screen and (max-width: 990px) {
+        .our-team {
+            margin-bottom: 30px;
+        }
+    }
+</style>
+
+<div class="container container-body">
+    <div class="d-flex justify-content-center h-100">
+
+        <div class="about-us-card">
+            <div class="d-flex justify-content-center">
+                <div class="container">
+                    <h3 id="title" class="text-uppercase">Nuestro Equipo</h3>
+                </div>
+                <div class="container text-justify">
+                    <p>Nuestro equipo siempre se esmera por crear la mejor experiencia de usuario en nuestro sitio web,
+                        son profesionales altamente capacitados los cuales son apasionados a la tecnología y las mejoras
+                        continuas.</p>
+                </div>
+            </div>
+            <div class="justify-content-center form_container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="our-team">
+                            <div class="pic">
+                                <img src="../static/assets/img/Adrian.jpeg">
+                            </div>
+                            <h3 class="title-card">Adrían Figueroa</h3>
+                            <span class="post">Full Stack Developer</span>
+                            <span class="post">País: Argentina</span>
+                            <ul class="social">
+                                <li>
+                                    <a href="https://www.linkedin.com/in/adrianfigueroa343467198/" class="fab fa-linkedin"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="our-team">
+                            <div class="pic">
+                                <img src="../static/assets/img/Steve.JPG">
+                            </div>
+                            <h3 class="title-card">Steve Araya Solórzano</h3>
+                            <span class="post">QA Automation Engineer</span>
+                            <span class="post">País: Costa Rica</span>
+                            <ul class="social">
+                                <li>
+                                    <a href="https://www.linkedin.com/in/adelso-steve-araya-sol%C3%B3rzano-9661991a6/" class="fab fa-linkedin"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock bloqueQueCambia %}

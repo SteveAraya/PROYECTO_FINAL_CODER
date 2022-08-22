@@ -9,6 +9,9 @@ from django.contrib       import messages
 def Home(self):
     return render(self, "Home.html")
 
+def AboutUs(self):
+    return render(self, "AboutUs.html")
+
 def AdminSite(self):
     return render(self, "Admin.html")
 
