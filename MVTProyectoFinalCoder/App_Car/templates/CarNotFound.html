@@ -4,25 +4,65 @@
 
 {% block bloqueQueCambia %}
 
-<h2><span>Nuestros Vehículo</span></h2>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 search">
-            <form method="GET">
-                <div id="custom-search-input">
-                    <div class="input-group col-md-12">
-                        <input type="text" class="form-control" placeholder="Ingrese marca o modelo del vehículo..." name="buscar" value="{{request.GET.buscar}}">
-                        <span class="input-group-list">
-                            <i class="icon icon-search"></i>
-                            <button type="submit" class="btn btn-info">Buscar</button>
-                        </span>
-                    </div>
-                </div>
-            </form>
+<style>
+    .car-container-card {
+        width: 750px;
+        margin-top: auto;
+        margin-bottom: auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .car-container {
+        padding-top: 30px;
+        max-width: 490px !important;
+    }
+
+    #form-title {
+        color: #1b201f;
+    }
+
+    .not-found{
+        padding-top: 30px;
+        color: red;
+    }
+
+    .btn-go-back {
+        background-color: #1c8fb5;
+        color: white;
+    }
+
+    .btn-go-back:hover {
+        background-color: white;
+        border-color: #1c8fb5;
+        color: #1c8fb5;
+    }
+</style>
+
+<div class="container container-body">
+    <div class="d-flex justify-content-center h-100">
+        <div class="car-container-card">
+
+            <div class="d-flex justify-content-center">
+                <h3 id="form-title">Nuestros Vehículos</h3>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <h4 class="not-found">Lo sentimos, no contamos con el vehículo buscado :(</42>
+            </div>
+
+            <div class="container car-container">
+                <img src="https://cdn-icons-png.flaticon.com/512/6178/6178994.png" class="card-img-top" alt="imagen-auto">
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-go-back" href="{% url 'CarList' %}">Volver a la Lista</a>
+            </div>
         </div>
     </div>
 </div>
-
-<h2>Lo sentimos, no contamos con el vehículo buscado</h2>
 
 {% endblock bloqueQueCambia %}
