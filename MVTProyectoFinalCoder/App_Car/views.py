@@ -76,7 +76,7 @@ def CarList(request):
             Q(modelo__icontains=busqueda) 
         ).distinct()
 
-        paginator = Paginator(listado_cars,2)
+        paginator = Paginator(listado_cars,3)
         pagina    = request.GET.get("page") or 1
         cars      = paginator.get_page(pagina)
 
