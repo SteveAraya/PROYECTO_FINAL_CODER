@@ -109,15 +109,18 @@ html {
   margin-top: 10px;
 }
 
-/* footer.footer {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-} */
+/* footer */
+.footer-text {
+  color: white;
+  padding-top: 20px;
+}
 
 .bg-dark {
   height: 6%;
   background: #1b201f !important;
 }
+
+/* end footer */
 
 .cars-list{
   display: flex !important;

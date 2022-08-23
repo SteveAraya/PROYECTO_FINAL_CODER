@@ -4,80 +4,355 @@
 
 {% block bloqueQueCambia %}
 
-<h2><span>Nuestros Vehículo</span></h2>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 search">
-            <form method="GET">
-                <div id="custom-search-input">
-                    <div class="input-group col-md-12">
-                        <input type="text" class="form-control" placeholder="Ingrese marca o modelo del vehículo..." name="buscar" value="{{request.GET.buscar}}">
-                        <span class="input-group-list">
-                            <i class="icon icon-search"></i>
-                            <button type="submit" class="btn btn-info">Buscar</button>
-                        </span>
+<style>
+    .car-container-card {
+        width: 750px;
+        margin-top: auto;
+        margin-bottom: auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    a:link,
+    a:visited,
+    a:active {
+        text-decoration: none;
+    }
+
+    .title {
+        color: #1b201f;
+    }
+
+    .title-history {
+        color: #1c8fb5 !important;
+    }
+
+    .title-card {
+        color: white;
+    }
+
+    .card-subtitle {
+        color: white;
+    }
+
+    .our-team {
+        padding: 20px 15px 30px;
+        background: #1b201f;
+        border-radius: 15px;
+        text-align: center;
+        border: 1px solid #1c8fb5;
+
+    }
+
+    .our-team:hover {
+        transition: .5s;
+        box-shadow: 0px 1px 5px 0px #d1d1d1;
+    }
+
+    .our-team .pic {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        background: white;
+        padding: 5px;
+        margin-bottom: 25px;
+        transition: all 0.5s ease 0s;
+        border-radius: 50%;
+    }
+
+    .our-team:hover .pic {
+        background: #1c8fb5;
+        border-radius: 50%;
+    }
+
+    .pic img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+    }
+
+    .our-team .title {
+        display: block;
+        font-size: 20px;
+        font-weight: 600;
+        color: #fff;
+        text-transform: uppercase;
+        margin: 0 0 7px 0;
+    }
+
+    .our-team .post {
+        display: block;
+        font-size: 15px;
+        color: #1c8fb5;
+        text-transform: capitalize;
+        margin-bottom: 15px;
+    }
+
+    .post-histoy {
+        text-transform: none !important;
+        color: white !important;
+    }
+
+    .our-team .social {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .our-team .social li {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .our-team .social li a {
+        display: block;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 50%;
+        font-size: 15px;
+        color: #1c8fb5;
+        border: 1px solid #1c8fb5;
+        transition: all 0.5s ease 0s;
+    }
+
+    .our-team:hover .social li a {
+        background: #1c8fb5;
+        color: white;
+    }
+
+    @media only screen and (max-width: 990px) {
+        .our-team {
+            margin-bottom: 30px;
+        }
+    }
+
+    .card {
+        gap: 10px !important;
+        max-width: 220px !important;
+    }
+
+    .card:hover {
+        box-shadow: 0px 0px 5px 5px #1c8fb556;
+        transform: scale(1.010);
+    }
+
+    .btn-details {
+        background-color: #1c8fb5;
+        color: white;
+    }
+
+    .btn-details:hover {
+        background-color: white;
+        color: #1c8fb5;
+    }
+
+    .btn-search {
+        background-color: #1c8fb5;
+        color: white;
+    }
+
+    .btn-search:hover {
+        background-color: white;
+        border-color: #1c8fb5;
+        color: #1c8fb5;
+    }
+
+    .history {
+        height: 552px !important;
+    }
+
+    .car-card-passengers {
+        display: inline-block;
+        text-align: right;
+    }
+
+    /* Info del vehiculo */
+    .car-card-trans {
+        -webkit-text-size-adjust: 100%;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        font-family: Poppins, sans-serif;
+        color: white;
+        font-size: 1em;
+        line-height: 1.35em;
+        box-sizing: border-box;
+        display: flex;
+        -webkit-box-align: end;
+        align-items: flex-end;
+    }
+
+    .car-card-ul {
+        -webkit-text-size-adjust: 100%;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        font-family: Poppins, sans-serif;
+        color: white;
+        font-size: 1em;
+        line-height: 1.35em;
+        box-sizing: border-box;
+        margin-top: 0;
+        margin-bottom: 0;
+        list-style-type: none;
+        display: flex;
+        padding-left: 0;
+    }
+
+    .car-card-passengers-txt {
+        padding-left: 10px;
+    }
+
+    /* Barra de navegación */
+
+    .page-link {
+        color: #fff !important;
+        background-color: #1c8fb5 !important;
+    }
+
+    .options-nav {
+        background-color: #1c8fb5 !important;
+    }
+
+    .options-nav-next {
+        background-color: white !important;
+        border-color: #1c8fb5 !important;
+        color: #1c8fb5 !important;
+    }
+
+    .options-nav-back {
+        background-color: white !important;
+        border-color: #1c8fb5 !important;
+        color: #1c8fb5 !important;
+    }
+</style>
+
+<div class="container container-body">
+    <div class="d-flex justify-content-center h-100">
+        <div class="car-container-card">
+
+            <div class="d-flex justify-content-center">
+                <h3 id="form-title">Nuestros Vehículo</h3>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 search">
+                        <form method="GET">
+                            <div id="custom-search-input">
+                                <div class="input-group col-md-12">
+                                    <input type="text" class="form-control"
+                                        placeholder="Ingrese marca o modelo del vehículo..." name="buscar"
+                                        value="{{request.GET.buscar}}">
+                                    <span class="input-group-list">
+                                        <i class="icon icon-search"></i>
+                                        <button type="submit" class="btn btn-search">Buscar</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </form>
+            </div>
+
+            <div class="card-deck">
+
+                {% for car in cars %}
+
+                <div class="card our-team mt-5" style="width: 18rem !important;">
+                    <h5 class="title-card">{{car.categoria}}</h5>
+                    <h6 class="card-subtitle">{{car.marca}} {{car.modelo}}</h6>
+                    <img src="{{car.imagen.url}}" class="card-img-top" alt="imagen-auto" height="190px">
+
+                    <div class="car-card-icons-cont txt-marino ml-4">
+
+                        <div class="car-card-trans">
+                            <img src="https://uploads-ssl.webflow.com/61af8b52b18b8403908b7c33/61af8b52b18b841ab78b7cf7_ic_car-shift-pattern.svg"
+                                loading="lazy" width="20" height="20" alt="" class="m-right4-lg">
+                            <div class="car-card-passengers-txt">
+                                {{car.tipo_caja}}
+                            </div>
+                        </div>
+
+                        <div class="car-card-icons">
+                            <ul role="list" class="car-card-ul">
+                                <li class="car-card-li">
+                                    <div class="car-card-trans">
+                                        <img src="https://uploads-ssl.webflow.com/61af8b52b18b8403908b7c33/61af8b52b18b8465858b7cf5_ic_person.svg"
+                                            loading="lazy" width="20" height="20" alt="" class="m-right4-lg">
+                                        <div class="car-card-passengers-txt">
+                                            {{car.cantidad_pasajeros}}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="car-card-li pl-2">
+                                    <div class="car-card-trans">
+                                        <img src="https://uploads-ssl.webflow.com/61af8b52b18b8403908b7c33/61af8b52b18b84f42a8b7cf6_ic_car-door.svg"
+                                            loading="lazy" width="20" height="20" alt="" class="m-right4-lg">
+                                        <div class="car-card-passengers-txt">
+                                            {{car.numero_puertas}}
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <form action="{% url 'CarDetail' car.id %}" method="GET">
+                        <button type="submit" class="btn btn-details">
+                            Ver detalles
+                        </button>
+                    </form>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            <div class="row mt-3 justify-content-center" style="margin:auto; width:auto">
+                <nav>
+                    <ul class="pagination">
+                        {% if cars.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link options-nav-back"
+                                href="{% if busqueda %} ?buscar={{ busqueda }}&page=1 {% else %} ?page=1 {% endif %}">Primera</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link options-nav-back"
+                                href="{% if busqueda %} ?buscar={{ busqueda }}&page={{ cars.previous_page_number }} {% else %} ?page={{ cars.previous_page_number }} {% endif %}">&laquo;</a>
+                        </li>
+                        {% endif %}
+
+                        {% for pagina in paginas %}
+
+                        <li class="page-item{% if pagina_actual == pagina %} active {% endif %}">
+                            <a class="page-link options-nav"
+                                href="{% if busqueda %} ?buscar={{ busqueda }}&page={{ pagina }} {% else %} ?page={{ pagina }} {% endif %}">
+                                {{pagina}}
+                            </a>
+                        </li>
+                        {% endfor %}
+
+                        {% if cars.has_next %}
+                        <li class="page-item">
+                            <a class="page-link options-nav-next"
+                                href="{% if busqueda %} ?buscar={{ busqueda }}&page={{ cars.next_page_number }} {% else %} ?page={{ cars.next_page_number }} {% endif %}">&raquo;
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link options-nav-next"
+                                href="{% if busqueda %} ?buscar={{ busqueda }}&page={{ cars.paginator.num_pages }} {% else %} ?page={{ cars.paginator.num_pages }} {% endif %}">
+                                Última
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
 </div>
-<section class="car-list">
-        {% for car in cars %}
-        
-             <div class="card" style="width: 18rem">
-                <div class="card-body">
-                <h5 class="card-title">{{car.categoria}}</h5>
-                <h6 class="card-subtitle">{{car.marca}} {{car.modelo}}</h6>
-                <img src="{{car.imagen.url}}" class="card-img-top" alt="imagen-auto" height="190px">
-                <div class="contenido-card">
-                    <ul>
-                        <li><p class="card-text">{{car.tipo_caja}}</p></li>
-                        <li><p class="card-text">{{car.cantidad_pasajeros}}</p></li>
-                        <li><p class="card-text">{{car.numero_puertas}}</p></li>
-                    </ul>
-                
-                    <form action="{% url 'CarDetail' car.id %}" method="GET">
-                        <button type="submit" class="btn btn-ligh">Ver detalles</button>
-                    </form>
-        
-                </div>
-                </div>
-            </div>
-        
-    {% endfor %}
-</section>
-
-<div class="row mt-3 justify-content-center" style="margin:auto; width:auto">
-    <nav>
-        <ul class="pagination">
-            {% if cars.has_previous %}
-                <li class="page-item">
-                    <a class="page-link" href="{% if busqueda %} ?buscar={{ busqueda }}&page=1 {% else %} ?page=1 {% endif %}">Primera</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="{% if busqueda %} ?buscar={{ busqueda }}&page={{ cars.previous_page_number }} {% else %} ?page={{ cars.previous_page_number }} {% endif %}">&laquo;</a>
-                </li>
-            {% endif %}
-            
-            {% for pagina in paginas %}
-            
-                <li class="page-item{% if pagina_actual == pagina %} active {% endif %}">
-                    <a class="page-link" href="{% if busqueda %} ?buscar={{ busqueda }}&page={{ pagina }} {% else %} ?page={{ pagina }} {% endif %}">{{ pagina }}</a>
-                </li>
-            {% endfor %}
-
-            {% if cars.has_next %}
-                <li class="page-item">
-                    <a class="page-link" href="{% if busqueda %} ?buscar={{ busqueda }}&page={{ cars.next_page_number }} {% else %} ?page={{ cars.next_page_number }} {% endif %}">&raquo;</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="{% if busqueda %} ?buscar={{ busqueda }}&page={{ cars.paginator.num_pages }} {% else %} ?page={{ cars.paginator.num_pages }} {% endif %}">Última</a>
-                </li>
-            {% endif %}
-        </ul>
-    </nav>
-</div>
-
-
 {% endblock bloqueQueCambia %}
