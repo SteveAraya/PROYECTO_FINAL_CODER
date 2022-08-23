@@ -27,6 +27,10 @@ html {
   color: #1c8fb5 !important;
 }
 
+.navbar>.container {
+  flex-wrap:initial !important;
+}
+
 .container-body {
   height: 88%;
 }
