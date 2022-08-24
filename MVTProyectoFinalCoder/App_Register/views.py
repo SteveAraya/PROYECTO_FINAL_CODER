@@ -25,7 +25,7 @@ def Register(request):
             username = form.cleaned_data.get('username')
             messages.success(request, 'El usuario: ' + username + ' fue creado con éxito!')
 
-            return redirect('/register')
+            return redirect('/createUser')
 
         else:
             for message in form.errors.values():
