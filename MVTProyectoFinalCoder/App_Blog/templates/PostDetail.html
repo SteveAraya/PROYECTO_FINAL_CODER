@@ -217,27 +217,23 @@
 
 
 {% for post in posts %}
-
-<h1>{{post.titulo}}</h1>
-<!-- <div class="d-flex justify-content-center h-100">
+<div class="d-flex justify-content-center h-100">
     <div class="user_card">
         <div class="d-flex justify-content-center">
-            <h3 id="form-title">Vista de Detalle</h3>
+            <h3 id="form-title">{{post.titulo}}</h3>
         </div>
         <div class="container car-container">
-            <img src="{{car.imagen.url}}" class="card-img-top" alt="imagen-auto">
+            <img src="{{post.imagen.url}}" class="card-img-top" alt="imagen-auto">
         </div>
 
         <div class="justify-content-center form_container">
             <div class="row">
                 <div class="col-md-12 col-sm-6">
                     <div class="our-team">
-                        <h3 class="title-card">{{car.marca}}</h3>
-                        <span class="post">Modelo: {{car.modelo}}</span>
-                        <span class="post">Nº Placa: {{car.placa}}</span>
-                        <span class="post">Año: {{car.annio}}</span>
+                        <h3 class="title-card">{{post.sub_titulo}}</h3>
+                        <span class="post">{{post.cuerpo}}</span>
 
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-md-6 col-sm-6">
                                 <h5 class="card-subtitle pb-3">ESPECIFICACIONES</h5>
                                 <span class="post">Categoria: {{car.categoria}}</span>
@@ -247,33 +243,16 @@
                                 <span class="post">Cantidad de Pasajeros: {{car.cantidad_pasajeros}}</span>
                                 <span class="post">Numero de Puertas: {{car.numero_puertas}}</span>
                             </div>
-                            <div class="col-md-6 col-sm-6">
-                                <h5 class="card-subtitle pb-3">TAMBIÉN INCLUYE</h5>
-                                {% if car.control_crucero %}
-                                <span class="post">- Control Crucero</span>
-                                {% endif %}
-                                {% if car.radio %}
-                                <span class="post">- Radio</span>
-                                {% endif %}
-                                {% if car.aacond %}
-                                <span class="post">- Aire Acondicionado</span>
-                                {% endif %}
-                                {% if car.bluetooth %}
-                                <span class="post">- Bluetooth</span>
-                                {% endif %}
-                                {% if car.cierrepuertas %}
-                                <span class="post">- Cierre Central</span>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <a class="btn btn-details" href="{% url 'CarList' %}">Volver a la Lista</a>
+                            
+                        </div> -->
+                        <a class="btn btn-details" href="{% url 'PostList' %}">Volver a la Lista</a>
                     </div>
                 </div>
             </div>
 
         </div>
     </div>
-</div> -->
+</div>
 
 {% endfor %}
 

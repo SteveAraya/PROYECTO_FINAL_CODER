@@ -1,19 +1,6 @@
 
 from django import forms
 from django.contrib.auth.models import User
-from .models import Categoria
-
-class CatForm(forms.ModelForm):
-    class Meta:
-        model=Categoria
-        fields=['nombre']
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        self.fields['nombre'].widget.attrs.update({
-            'class':'control-form'
-        })
 
 class PostForm(forms.Form):
     categoria = forms.CharField()

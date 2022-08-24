@@ -243,12 +243,16 @@
 
             <div class="card-deck">
                 
-                {% for categoria in categorias %}
-                    <h3>{{categoria}}</h3>
-                {% endfor %}
-                    
-
-
+                <!-- <form method="GET">
+                    <button type="submit" value="Viajes" class="btn btn-search">Viajes</button>
+                    <button type="submit" value="Estilo de vida" class="btn btn-search">Estilo de vida</button>
+                    <button type="submit" value="Vehiculos" class="btn btn-search">Vehiculos</button>
+                </form> -->
+                <div>
+                <a href="{% url 'Categoria' 'Viajes' %}" class="btn btn-search">Vieajes</a>
+                <a href="{% url 'Categoria' 'Estilo de vida' %}" class="btn btn-search">Estilo de vida</a>
+                <a href="{% url 'Categoria' 'Vehiculos' %}" class="btn btn-search">Vehiculos</a>
+                </div>
                 {% for post in posts %}
 
                 <div class="card our-team mt-5" style="width: 18rem !important;">
@@ -260,7 +264,7 @@
 
                         <div class="car-card-trans">
                             <div class="car-card-passengers-txt">
-                                {{post.cuerpo}}
+                                {{post.cuerpo|slice:":10"}}...
                             </div>
                         </div>
                     </div>
@@ -270,6 +274,9 @@
                             Ver detalles
                         </button>
                     </form>
+                    <div class="card-footer text-muted">
+                        <span>Creado el: {{post.fecha}}</span>
+                      </div>
 
                 </div>
 
