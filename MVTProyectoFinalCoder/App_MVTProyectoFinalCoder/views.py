@@ -37,6 +37,9 @@ def Logout(request):
     messages.info(request, "Logged out successfully!")
     return redirect('/login')
 
+def PageNotFound(request, exception):
+    return render(request, "PageNotFound.html")
+
 # class ContactUsList(ListView):
 
 #     model               = Contact
