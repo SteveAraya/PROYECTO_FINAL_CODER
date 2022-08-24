@@ -6,6 +6,6 @@ from App_Register.views import (
 
 urlpatterns = [    
 
-    path('', Register,  name='Register'),
+    path('createUser', Register,  name='Register'),
 
 ]
