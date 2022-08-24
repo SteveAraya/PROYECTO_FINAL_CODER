@@ -1,0 +1,77 @@
+{% extends 'Main.html' %}
+
+{% block bloqueQueCambia %}
+
+<section class="features-icons bg-light text-center">
+
+    <div class="container">
+
+        <h1>Editar Post</h1>
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8 col-xl-7" >
+                
+                <form method="POST" enctype="multipart/form-data">{% csrf_token %} 
+
+                   <!-- Categoria input-->
+                   <div class="form-floating mb-3">
+                        <select class="form-select" name="categoria" aria-label="Default select example">
+                        <option selected>Seleccione una categoria</option>
+                        <option value="Estilo de vida">Estilo de vida</option>
+                        <option value="Viajes">Viajes</option>
+                        <option value="Vehículos">Vehículos</option>
+                    </select>
+                </div>
+
+                <!-- Titulo input-->
+                <div class="form-floating mb-3">  
+                    <input class="form-control" name="titulo" type="text" required>
+                    <label name="titulo">Titulo</label>
+                </div>
+                <!-- Subtitulo input-->
+                <div class="form-floating mb-3">  
+                    <input class="form-control" name="sub_titulo" type="text" required>
+                    <label name="sub_titulo">Subtitulo</label>
+                </div>
+
+                <!-- Cuerpo input-->
+                <div class="form-floating mb-3">  
+                    <input class="form-control" name="cuerpo" type="text" required>
+                    <label name="cuerpo">Cuerpo</label>
+                </div>
+
+               <!-- Autor-->
+               <div class="form-floating mb-3">  
+                <span> {{user.name}} {{user.lastname}} </span>
+                </div>
+
+                <!-- Fecha input-->
+                <div class="form-floating mb-3">  
+                    <input class="form-control" name="fecha" type="date" required>
+                    <label name="fecha">Fecha de creación</label>
+                </div>
+
+                <!-- Imagen-->
+                <div class="form-floating mb-3">
+                    <input class="form-control" name="imagen" type="file">
+                    <label name="imagen">Imagen del post</label>
+                </div>
+
+                    <!-- Submit Button-->
+                <input class="btn btn-primary" id="submitButton" type="submit" value="Editar" />
+                </form>
+            </div>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="container-fluid p-0">
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                {{ message }}
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}        
+        </div>
+    </div>
+</section>
+{% endblock bloqueQueCambia %}

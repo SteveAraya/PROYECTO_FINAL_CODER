@@ -1,0 +1,313 @@
+{% extends 'Main.html' %}
+
+{% load static %}
+
+{% block bloqueQueCambia %}
+
+<style>
+    .car-container-card {
+        width: 750px;
+        margin-top: auto;
+        margin-bottom: auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    a:link,
+    a:visited,
+    a:active {
+        text-decoration: none;
+    }
+
+    #form-title {
+        color: #1b201f;
+    }
+
+    .title {
+        color: #1b201f;
+    }
+
+    .title-history {
+        color: #1c8fb5 !important;
+    }
+
+    .title-card {
+        color: white;
+    }
+
+    .card-subtitle {
+        color: white;
+    }
+
+    .our-team {
+        padding: 20px 15px 30px;
+        background: #1b201f;
+        border-radius: 15px;
+        text-align: center;
+        border: 1px solid #1c8fb5;
+
+    }
+
+    .our-team:hover {
+        transition: .5s;
+        box-shadow: 0px 1px 5px 0px #d1d1d1;
+    }
+
+    .our-team .pic {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        background: white;
+        padding: 5px;
+        margin-bottom: 25px;
+        transition: all 0.5s ease 0s;
+        border-radius: 50%;
+    }
+
+    .our-team:hover .pic {
+        background: #1c8fb5;
+        border-radius: 50%;
+    }
+
+    .pic img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+    }
+
+    .our-team .title {
+        display: block;
+        font-size: 20px;
+        font-weight: 600;
+        color: #fff;
+        text-transform: uppercase;
+        margin: 0 0 7px 0;
+    }
+
+    .our-team .post {
+        display: block;
+        font-size: 15px;
+        color: #1c8fb5;
+        text-transform: capitalize;
+        margin-bottom: 15px;
+    }
+
+    .post-histoy {
+        text-transform: none !important;
+        color: white !important;
+    }
+
+    .our-team .social {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .our-team .social li {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .our-team .social li a {
+        display: block;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 50%;
+        font-size: 15px;
+        color: #1c8fb5;
+        border: 1px solid #1c8fb5;
+        transition: all 0.5s ease 0s;
+    }
+
+    .our-team:hover .social li a {
+        background: #1c8fb5;
+        color: white;
+    }
+
+    @media only screen and (max-width: 990px) {
+        .our-team {
+            margin-bottom: 30px;
+        }
+    }
+
+    .card {
+        gap: 10px !important;
+        max-width: 220px !important;
+    }
+
+    .card:hover {
+        box-shadow: 0px 0px 5px 5px #1c8fb556;
+        transform: scale(1.010);
+    }
+
+    .btn-details {
+        background-color: #1c8fb5;
+        color: white;
+    }
+
+    .btn-details:hover {
+        background-color: white;
+        color: #1c8fb5;
+    }
+
+    .btn-search {
+        background-color: #1c8fb5;
+        color: white;
+    }
+
+    .btn-search:hover {
+        background-color: white;
+        border-color: #1c8fb5;
+        color: #1c8fb5;
+    }
+
+    .history {
+        height: 552px !important;
+    }
+
+    .car-card-passengers {
+        display: inline-block;
+        text-align: right;
+    }
+
+    /* Info del vehiculo */
+    .car-card-trans {
+        -webkit-text-size-adjust: 100%;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        font-family: Poppins, sans-serif;
+        color: white;
+        font-size: 1em;
+        line-height: 1.35em;
+        box-sizing: border-box;
+        display: flex;
+        -webkit-box-align: end;
+        align-items: flex-end;
+    }
+
+    .car-card-ul {
+        -webkit-text-size-adjust: 100%;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        font-family: Poppins, sans-serif;
+        color: white;
+        font-size: 1em;
+        line-height: 1.35em;
+        box-sizing: border-box;
+        margin-top: 0;
+        margin-bottom: 0;
+        list-style-type: none;
+        display: flex;
+        padding-left: 0;
+    }
+
+    .car-card-passengers-txt {
+        padding-left: 10px;
+    }
+
+    /* Barra de navegación */
+
+    .page-link {
+        color: #fff !important;
+        background-color: #1c8fb5 !important;
+    }
+
+    .options-nav {
+        background-color: #1c8fb5 !important;
+    }
+
+    .options-nav-next {
+        background-color: white !important;
+        border-color: #1c8fb5 !important;
+        color: #1c8fb5 !important;
+    }
+
+    .options-nav-back {
+        background-color: white !important;
+        border-color: #1c8fb5 !important;
+        color: #1c8fb5 !important;
+    }
+</style>
+
+<div class="container container-body">
+    <div class="d-flex justify-content-center h-100">
+        <div class="car-container-card">
+
+            <div class="d-flex justify-content-center">
+                <h3 id="form-title">Posts</h3>
+            </div>
+
+            <div class="card-deck">
+                
+                {% for categoria in categorias %}
+                    <h3>{{categoria}}</h3>
+                {% endfor %}
+                    
+
+
+                {% for post in posts %}
+
+                <div class="card our-team mt-5" style="width: 18rem !important;">
+                    <h4 class="title-card">{{post.titulo}}</h4>
+                    <h5 class="card-subtitle">{{post.sub_titulo}}</h5>
+                    <img src="{{post.imagen.url}}" class="card-img-top" alt="imagen-auto" height="190px">
+
+                    <div class="car-card-icons-cont txt-marino ml-4">
+
+                        <div class="car-card-trans">
+                            <div class="car-card-passengers-txt">
+                                {{post.cuerpo}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <form action="{% url 'PostDetail' post.id %}" method="GET">
+                        <button type="submit" class="btn btn-details">
+                            Ver detalles
+                        </button>
+                    </form>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            <div class="row mt-3 justify-content-center" style="margin:auto; width:auto">
+                <nav>
+                    <ul class="pagination">
+                        {% if posts.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link options-nav-back" href="?page=1">Primera</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link options-nav-back" href="?page={{ posts.previous_page_number }}">&laquo;</a>
+                        </li>
+                        {% endif %}
+
+                        {% for pagina in paginas %}
+
+                        <li class="page-item{% if pagina_actual == pagina %} active {% endif %}">
+                            <a class="page-link options-nav" href="?page={{ pagina }}">{{pagina}}</a>
+                        </li>
+                        {% endfor %}
+
+                        {% if posts.has_next %}
+                        <li class="page-item">
+                            <a class="page-link options-nav-next" href="?page={{ posts.next_page_number }}">&raquo; </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link options-nav-next" href="?page={{ posts.paginator.num_pages }}">Última</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock bloqueQueCambia %}

@@ -1,0 +1,280 @@
+{% extends 'Main.html' %}
+
+{% load static %}
+
+{% block bloqueQueCambia %}
+
+<style>
+
+    .user_card {
+        margin-top: 30px !important;
+        padding-bottom: 5px !important;
+    }
+
+    .h-100 {
+        height: 88% !important;
+    }
+
+    a:link,
+    a:visited,
+    a:active {
+        text-decoration: none;
+    }
+
+    .title {
+        color: #1b201f;
+    }
+
+    .title-history {
+        color: #1c8fb5 !important;
+    }
+
+    .title-card {
+        color: white;
+    }
+
+    .card-subtitle {
+        color: white;
+    }
+
+    .our-team {
+        padding: 20px 15px 30px;
+        background: #1b201f;
+        border-radius: 15px;
+        text-align: center;
+        border: 1px solid #1c8fb5;
+
+    }
+
+    .our-team:hover {
+        transition: .5s;
+        box-shadow: 0px 1px 5px 0px #d1d1d1;
+    }
+
+    .our-team .pic {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        background: white;
+        padding: 5px;
+        margin-bottom: 25px;
+        transition: all 0.5s ease 0s;
+        border-radius: 50%;
+    }
+
+    .our-team:hover .pic {
+        background: #1c8fb5;
+        border-radius: 50%;
+    }
+
+    .pic img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+    }
+
+    .our-team .title {
+        display: block;
+        font-size: 20px;
+        font-weight: 600;
+        color: #fff;
+        text-transform: uppercase;
+        margin: 0 0 7px 0;
+    }
+
+    .our-team .post {
+        display: block;
+        font-size: 15px;
+        color: #1c8fb5;
+        text-transform: capitalize;
+        margin-bottom: 15px;
+    }
+
+    .post-histoy {
+        text-transform: none !important;
+        color: white !important;
+    }
+
+    .our-team .social {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .our-team .social li {
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .our-team .social li a {
+        display: block;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 50%;
+        font-size: 15px;
+        color: #1c8fb5;
+        border: 1px solid #1c8fb5;
+        transition: all 0.5s ease 0s;
+    }
+
+    .our-team:hover .social li a {
+        background: #1c8fb5;
+        color: white;
+    }
+
+    @media only screen and (max-width: 990px) {
+        .our-team {
+            margin-bottom: 30px;
+        }
+    }
+
+    .card {
+        gap: 10px !important;
+        max-width: 220px !important;
+    }
+
+    .card:hover {
+        box-shadow: 0px 0px 5px 5px #1c8fb556;
+        transform: scale(1.010);
+    }
+
+    .btn-details {
+        background-color: #1c8fb5;
+        color: white;
+    }
+
+    .btn-details:hover {
+        background-color: white;
+        color: #1c8fb5;
+    }
+
+    .btn-search {
+        background-color: #1c8fb5;
+        color: white;
+    }
+
+    .btn-search:hover {
+        background-color: white;
+        border-color: #1c8fb5;
+        color: #1c8fb5;
+    }
+
+    .history {
+        height: 552px !important;
+    }
+
+    .car-card-passengers {
+        display: inline-block;
+        text-align: right;
+    }
+
+    /* Info del vehiculo */
+    .car-card-trans {
+        -webkit-text-size-adjust: 100%;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        font-family: Poppins, sans-serif;
+        color: white;
+        font-size: 1em;
+        line-height: 1.35em;
+        box-sizing: border-box;
+        display: flex;
+        -webkit-box-align: end;
+        align-items: flex-end;
+    }
+
+    .car-card-ul {
+        -webkit-text-size-adjust: 100%;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        font-family: Poppins, sans-serif;
+        color: white;
+        font-size: 1em;
+        line-height: 1.35em;
+        box-sizing: border-box;
+        margin-top: 0;
+        margin-bottom: 0;
+        list-style-type: none;
+        display: flex;
+        padding-left: 0;
+    }
+
+    .car-card-passengers-txt {
+        padding-left: 10px;
+    }
+
+    .car-container {
+        max-width: 290px !important;
+    }
+
+    .form_container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+</style>
+
+
+{% for post in posts %}
+
+<h1>{{post.titulo}}</h1>
+<!-- <div class="d-flex justify-content-center h-100">
+    <div class="user_card">
+        <div class="d-flex justify-content-center">
+            <h3 id="form-title">Vista de Detalle</h3>
+        </div>
+        <div class="container car-container">
+            <img src="{{car.imagen.url}}" class="card-img-top" alt="imagen-auto">
+        </div>
+
+        <div class="justify-content-center form_container">
+            <div class="row">
+                <div class="col-md-12 col-sm-6">
+                    <div class="our-team">
+                        <h3 class="title-card">{{car.marca}}</h3>
+                        <span class="post">Modelo: {{car.modelo}}</span>
+                        <span class="post">Nº Placa: {{car.placa}}</span>
+                        <span class="post">Año: {{car.annio}}</span>
+
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <h5 class="card-subtitle pb-3">ESPECIFICACIONES</h5>
+                                <span class="post">Categoria: {{car.categoria}}</span>
+                                <span class="post">Tipo de Vehículo: {{car.tipo}}</span>
+                                <span class="post">Caja de velocidades: {{car.tipo_caja}}</span>
+                                <span class="post">Combustible: {{car.combustible}}</span>
+                                <span class="post">Cantidad de Pasajeros: {{car.cantidad_pasajeros}}</span>
+                                <span class="post">Numero de Puertas: {{car.numero_puertas}}</span>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <h5 class="card-subtitle pb-3">TAMBIÉN INCLUYE</h5>
+                                {% if car.control_crucero %}
+                                <span class="post">- Control Crucero</span>
+                                {% endif %}
+                                {% if car.radio %}
+                                <span class="post">- Radio</span>
+                                {% endif %}
+                                {% if car.aacond %}
+                                <span class="post">- Aire Acondicionado</span>
+                                {% endif %}
+                                {% if car.bluetooth %}
+                                <span class="post">- Bluetooth</span>
+                                {% endif %}
+                                {% if car.cierrepuertas %}
+                                <span class="post">- Cierre Central</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <a class="btn btn-details" href="{% url 'CarList' %}">Volver a la Lista</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div> -->
+
+{% endfor %}
+
+{% endblock bloqueQueCambia %}
