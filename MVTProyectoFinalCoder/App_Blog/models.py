@@ -3,30 +3,9 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-# class Categoria(models.Model):
-#     categoria = models.CharField(max_length=50)
-
-#     class Meta:
-#         verbose_name='categoria'
-#         verbose_name_plural='categorias'
-
-#     def __str__(self):
-#         return self.nombre  
-
-seleccion=[
-    (1,'Estilo de vida'),
-    (2,'Viajes'),
-    (3,'Vehiculos')
-]
-
-class Categoria(models.Model):
-    nombre = models.IntegerField(
-            null=False, blank=False,
-            choices=seleccion
-            )
 
 class Post(models.Model):
-    categoria=models.ManyToManyField(Categoria)
+    categoria = models.CharField(max_length=50, null=True)
     titulo = models.CharField(max_length=50)
     sub_titulo = models.CharField(max_length=50)
     cuerpo = models.CharField(max_length=500)
