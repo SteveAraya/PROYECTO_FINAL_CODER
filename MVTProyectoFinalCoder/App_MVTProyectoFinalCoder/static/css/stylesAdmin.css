@@ -136,6 +136,16 @@ thead tr th {
   color: white !important;
 }
 
+.btn-edit{
+  background-color: white;
+  color:  #1c8fb5;
+}
+
+.btn-edit:hover{
+  background-color: #1c8fb5 !important;
+  color:  white !important;
+}
+
 /* end table */
 
 /* btn delete and corfirm */
