@@ -1,41 +1,92 @@
-{% extends 'Father.html'%}
+{% extends 'Main.html'%}
 
 {% load static %}
 
 {% block bloqueQueCambia %}
 
-<section class="features-icons bg-light text-center">
+<style>
+  .about-us-card {
+    width: 980px;
+    margin-top: auto;
+    margin-bottom: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+  }
 
-  <div class="container">
+  .title {
+    color: #1b201f;
+  }
 
-      <h1>Lista de Oficinas</h1>
+  .title-history {
+    color: #1c8fb5 !important;
+  }
 
-      <table class="table">
+  .title-card {
+    color: white;
+  }
 
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Ubicacion</th>
-            <th scope="col">Telefono</th>
-            <th scope="col">Horario</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for office in OfficeList %}
-          <tr>
-            <td>{{office.nombre}}</td>
-            <td>{{office.ubicacion}}</td>
-            <td>{{office.telefono}}</td>
-            <td>{{office.horario}}</td>
-          </tr>
-        {% endfor %}
-          
-        </tbody>
+  thead tr th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #1b201f;
+  }
 
-      </table>
-    
+  .table-responsive {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    height: 550px !important;
+  }
+</style>
+
+<div class="container container-body">
+  <div class="d-flex justify-content-center h-100">
+
+    <div class="about-us-card">
+      <div class="d-flex justify-content-center">
+        <div class="container">
+          <h3 id="title" class="text-uppercase">Nuestras Oficinas</h3>
+        </div>
+        <div class="container text-justify">
+          <p>
+            Rent a Coder cuenta con varias
+            estaciones disponibles. Por favor verifique el
+            horario correspondiente para la estación deseada.
+          </p>
+        </div>
+      </div>
+      <div class="justify-content-center table-responsive">
+
+        <table class="table table-fixed">
+
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Ubicacion</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">Horario</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for office in OfficeListHome %}
+            <tr>
+              <td>{{office.nombre}}</td>
+              <td>{{office.ubicacion}}</td>
+              <td>{{office.telefono}}</td>
+              <td>{{office.horario}}</td>
+            </tr>
+            {% endfor %}
+
+          </tbody>
+
+        </table>
+
+      </div>
+    </div>
   </div>
-
-</section>
+</div>
 
 {% endblock bloqueQueCambia %}

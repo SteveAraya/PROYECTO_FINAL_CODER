@@ -11,6 +11,11 @@ class OfficeList(ListView):
     template_name       = './OfficeList.html'
     context_object_name = 'OfficeList'
 
+class OfficeListHome(ListView):
+    model               = Office
+    template_name       = './OfficeListHome.html'
+    context_object_name = 'OfficeListHome'
+
 class OfficeCreate(CreateView):
     model         = Office
     template_name = './OfficeCreate.html'
