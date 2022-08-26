@@ -1,11 +1,11 @@
 from django.urls import path
 
 from App_Reservation.views import (
-    Reservation,
+    CreateReservation,
 )
 
 urlpatterns = [    
 
-    path('', Reservation,  name='Reservation'),
+    path('', CreateReservation,  name='Reservation'),
 
 ]
