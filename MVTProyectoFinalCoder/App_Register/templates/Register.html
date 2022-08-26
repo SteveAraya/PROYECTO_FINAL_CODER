@@ -8,11 +8,31 @@
     }
 
     .container {
-        width: 700px;
+        width: 900px;
     }
 
     .user_card {
-        height: 620px !important;
+        height: 500px !important;
+    }
+
+    .form-control {
+        height: 35PX !important;
+    }
+
+    .info-label {
+        color: white !important;
+    }
+
+    .custom-file-label {
+        color: white !important;
+    }
+
+    .form-row{
+        padding-bottom: 70px !important;
+    }
+
+    .custom-file{
+        color: white !important;
     }
 </style>
 
@@ -23,42 +43,53 @@
             <div class="d-flex justify-content-center text-center">
                 <h3 id="form-title">CREAR USUARIO</h3>
             </div>
-            <div class="justify-content-center form_container text-center">
+            <div class="justify-content-center form_container">
 
                 <form action="{% url 'Register' %}" method="POST">{% csrf_token %}
 
-                    <!-- Usuario input-->
-                    <div class="form-floating mb-3">
-                        {{registerForm.username}}
+                    <div class="form-row">
+                        <!-- Usuario input-->
+                        <div class="col-md-6 mb-3">
+                            <label class="info-label" for="validationTooltip01">Usuario: </label>
+                            {{registerForm.username}}
+                        </div>
+                        <!-- Correo Electronico input-->
+                        <div class="col-md-6 mb-3">
+                            <label class="info-label" for="validationTooltip01">Correo Electrico: </label>
+                            {{registerForm.email}}
+                        </div>
                     </div>
 
-                    <!-- Nombre input-->
-                    <div class="form-floating mb-3">
-                        {{registerForm.first_name}}
+                    <div class="form-row">
+                        <!-- Nombre input-->
+                        <div class="col-md-6 mb-3">
+                            <label class="info-label" for="validationTooltip01">Nombre: </label>
+                            {{registerForm.first_name}}
+                        </div>
+                        <!-- Apellidos input-->
+                        <div class="col-md-6 mb-3">
+                            <label class="info-label" for="validationTooltip01">Apellidos: </label>
+                            {{registerForm.last_name}}
+                        </div>
                     </div>
 
-                    <!-- Apellidos input-->
-                    <div class="form-floating mb-3">
-                        {{registerForm.last_name}}
+                    <div class="form-row">
+                        <!-- Contraseña input-->
+                        <div class="col-md-6 mb-3">
+                            <label class="info-label" for="validationTooltip01">Nombre: </label>
+                            {{registerForm.password1}}
+                        </div>
+                        <!-- Contraseña Confirmar input-->
+                        <div class="col-md-6 mb-3">
+                            <label class="info-label" for="validationTooltip01">Apellidos: </label>
+                            {{registerForm.password2}}
+                        </div>
                     </div>
 
-                    <!-- Correo Electronico input-->
-                    <div class="form-floating mb-3">
-                        {{registerForm.email}}
-                    </div>
-
-                    <!-- Contraseña input-->
-                    <div class="form-floating mb-3">
-                        {{registerForm.password1}}
-                    </div>
-
-                    <!-- Contraseña Confirmar input-->
-                    <div class="form-floating mb-3">
-                        {{registerForm.password2}}
-                    </div>
+                    <br>
 
                     <!-- Submit Button-->
-                    <div class="d-flex justify-content-center mt-4 login_container">
+                    <div class="d-flex justify-content-center mt-4 login_container text-center">
                         <input class="btn main_btn" type="submit" value="Registrar">
                     </div>
 
@@ -77,11 +108,7 @@
                 {% endif %}
 
             </div>
-
-
-
         </div>
-
     </div>
 </div>
 

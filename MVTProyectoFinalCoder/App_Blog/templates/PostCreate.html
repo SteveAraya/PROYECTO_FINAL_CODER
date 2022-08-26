@@ -1,77 +1,129 @@
-{% extends 'Main.html' %}
+{% extends 'Admin.html' %}
 
 {% block bloqueQueCambia %}
 
-<section class="features-icons bg-light text-center">
+<style>
+    .form-floating {
+        padding-bottom: 20px !important;
+    }
 
-    <div class="container">
+    .container {
+        width: 900px;
+    }
 
-        <h1>Crear Post</h1>
+    .user_card {
+        height: 750px !important;
+    }
 
-        <div class="row justify-content-center">
+    .form-control {
+        height: 35PX !important;
+    }
 
-            <div class="col-lg-8 col-xl-7" >
-                
-                <form  action="{% url 'PostCreate' %}" method="POST" enctype="multipart/form-data">{% csrf_token %} 
+    .info-label {
+        color: white !important;
+    }
 
-                   <!-- Categoria input-->
-                   <div class="form-floating mb-3">
-                        <select class="form-select" name="categoria" aria-label="Default select example" required>
-                        <option value="">Seleccione una categoria</option>
-                        <option value="Estilo de vida">Estilo de vida</option>
-                        <option value="Viajes">Viajes</option>
-                        <option value="Vehiculos">Vehiculos</option>
-                    </select>
-                </div>
+    .custom-file-label {
+        color: white !important;
+    }
 
-                <!-- Titulo input-->
-                <div class="form-floating mb-3">  
-                    <input class="form-control" name="titulo" type="text" required>
-                    <label name="titulo">Titulo</label>
-                </div>
-                <!-- Subtitulo input-->
-                <div class="form-floating mb-3">  
-                    <input class="form-control" name="sub_titulo" type="text" required>
-                    <label name="sub_titulo">Subtitulo</label>
-                </div>
+    .form-row {
+        padding-bottom: 70px !important;
+    }
 
-                <!-- Cuerpo input-->
-                <div class="form-floating mb-3">  
-                    <input class="form-control" name="cuerpo" type="text" required>
-                    <label name="cuerpo">Cuerpo</label>
-                </div>
+    .custom-file {
+        color: white !important;
+    }
 
-               <!-- Autor-->
-               <div class="form-floating mb-3">  
-                <span> {{user.name}} {{user.lastname}} </span>
-                </div>
+    .textarea-container{
+        height: 150px !important;
+        margin-bottom: 10px !important;
+    }
 
-                <!-- Fecha input-->
-                <div class="form-floating mb-3">  
-                    <input class="form-control" name="fecha" type="date" required>
-                    <label name="fecha">Fecha de creación</label>
-                </div>
+    .custom-file{
+        padding-bottom: 40px !important;
+    }
+</style>
 
-                <!-- Imagen-->
-                <div class="form-floating mb-3">
-                    <input class="form-control" name="imagen" type="file" required>
-                    <label name="imagen">Imagen del post</label>
-                </div>
+<div class="container container-body">
+    <div class="d-flex justify-content-center h-100">
+
+        <div class="user_card">
+            <div class="d-flex justify-content-center text-center">
+                <h3 id="form-title">CREAR BLOG</h3>
+            </div>
+            <div class="justify-content-center form_container">
+
+                <form action="{% url 'PostCreate' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+                    <div class="form-row">
+                        <!-- Categoria input-->
+                        <div class="col-md-6 mb-3">
+                            <label class="info-label" for="validationTooltip01">Categoria: </label>
+                            <select class="form-control" name="categoria" aria-label="Default select example" required>
+                                <option value="">Seleccione una categoria</option>
+                                <option value="Estilo de vida">Estilo de vida</option>
+                                <option value="Viajes">Viajes</option>
+                                <option value="Vehiculos">Vehiculos</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="info-label" for="validationTooltip01">Fecha: </label>
+                            <input class="form-control" name="fecha" type="date" required>
+                        </div>
+                        <!-- Fecha input-->
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label class="info-label" for="validationTooltip01">Titulo: </label>
+                            <input class="form-control" name="titulo" type="text" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="info-label" for="validationTooltip01">Subtitulo: </label>
+                            <input class="form-control" name="sub_titulo" type="text" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label class="info-label" for="validationTooltip01">Cuerpo del Blog: </label>
+                            <textarea class="form-control textarea-container" name="cuerpo" cols="30" rows="10" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row pt-5">
+                        <div class="col-md-12 mb-3">
+                            <!-- Imagen-->
+                            <div class="custom-file">
+                                <label class="custom-file-label" name="imagen" for="customFileLang">
+                                    Seleccionar un Archivo
+                                </label>
+                                <input type="file" name="imagen" class="custom-file-input" id="customFileLang" lang="es">
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Submit Button-->
-                <input class="btn btn-primary" id="submitButton" type="submit" value="Enviar" />
+                    <div class="d-flex justify-content-center mt-4 login_container text-center">
+                        <input class="btn main_btn" type="submit" value="Enviar">
+                    </div>
+
                 </form>
+                <br>
+
+                {% if messages %}
+                {% for message in messages %}
+                <div class="container-fluid p-0">
+                    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                        {{ message }}
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+
             </div>
-        {% if messages %}
-        {% for message in messages %}
-        <div class="container-fluid p-0">
-            <div class="alert {{ message.tags }} alert-dismissible" role="alert">
-                {{ message }}
-            </div>
-        </div>
-        {% endfor %}
-        {% endif %}        
         </div>
     </div>
-</section>
+</div>
 {% endblock bloqueQueCambia %}
