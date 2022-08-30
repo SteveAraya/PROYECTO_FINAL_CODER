@@ -40,7 +40,7 @@
         border-radius: 15px;
         text-align: center;
         border: 1px solid #1c8fb5;
-        height: 350px !important;
+        height: 400px !important;
 
     }
 
@@ -62,12 +62,10 @@
     }
 
     .nav-link{
-        /* background: #1c8fb5; */
         color: white;
     }
 
     .active{
-        /* background: #1c8fb5; */
         color: #1c8fb5 !important;
     }
 
@@ -132,7 +130,7 @@
                                             aria-label="Default select example" required>
                                             <option value="">Seleccione una Oficina</option>
                                             {% for office in offices %}
-                                            <option value={{office}}>{{office.nombre}}</option>
+                                            <option value={{office.id}}>{{office.nombre}}</option>
                                             {% endfor %}
                                         </select>
                                     </div>
@@ -158,7 +156,7 @@
                                             aria-label="Default select example" required>
                                             <option value="">Seleccione una Oficina</option>
                                             {% for office in offices %}
-                                            <option value={{office}}>{{office.nombre}}</option>
+                                            <option value={{office.id}}>{{office.nombre}}</option>
                                             {% endfor %}
                                         </select>
                                     </div>
@@ -187,7 +185,16 @@
                                         <select class="form-control" name="vehiculo" aria-label="Default select example" required>
                                             <option value="">Seleccione un Vehículo...</option>
                                             {% for car in cars %}
-                                            <option value={{car}}>{{car.marca}}</option>
+                                            <option value={{car.id}}>
+                                                {{car.categoria}} || 
+                                                {{car.tipo}} ||
+                                                {{car.marca}} || 
+                                                {{car.modelo}} || 
+                                                {{car.placa}} ||
+                                                {{car.annio}} || 
+                                                {{car.tipo_caja}} ||
+                                                {{car.combustible}}
+                                            </option>
                                             {% endfor %}
                                         </select>
                                     </div>
@@ -200,7 +207,7 @@
                         <div class='tab-pane container fade' id='A3'>
 
                             <div class="justify-content-center form_container">
-                                <div class="row">
+                                <div class="row form-floating">
                                     <!-- Nombre Completo -->
                                     <div class="col-md-6 col-sm-6">
                                         <label class="info-label" for="validationTooltip01">Nombre Completo: </label>
@@ -212,7 +219,7 @@
                                         <input class="form-control" name="identificacionConductor" type="text" required>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row form-floating">
                                     <!-- Nombre Completo -->
                                     <div class="col-md-6 col-sm-6">
                                         <label class="info-label" for="validationTooltip01">Telefono: </label>
@@ -272,6 +279,18 @@
 
                 </form>
             </div>
+
+            <br>
+
+            {% if messages %}
+            {% for message in messages %}
+            <div class="container-fluid p-0">
+                <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                    {{ message }}
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
         </div>
     </div>
 </div>

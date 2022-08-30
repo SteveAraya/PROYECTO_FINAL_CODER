@@ -24,28 +24,19 @@ def CreateReservation(request):
         if(reservationForm.is_valid()):
             data = reservationForm.cleaned_data
             reservation = Reservation(
-                oficinaSalida  = data["oficinaSalida"],
+                oficinaSalida  = Office(request.POST["oficinaSalida"]),
                 fechaSalida    = data["fechaSalida"],
                 horaSalida     = data["horaSalida"],
-                oficinaLlegada = data["oficinaLlegada"],
+                oficinaLlegada = Office(request.POST["oficinaLlegada"]),
                 fechaLlegada   = data["fechaLlegada"],
                 horaLlegada    = data["horaLlegada"],
-                vehiculo       = data["vehiculo"],
+                vehiculo       = Car(request.POST["vehiculo"]),
                 nombreConductor         = data["nombreConductor"],
                 identificacionConductor = data["identificacionConductor"],
                 telefonoConductor       = data["telefonoConductor"],
                 edadConductor           = data["edadConductor"],
                 correoConductor         = data["correoConductor"],
             )
-
-            print("Entre al form..............")
-            print("Entre al form..............")
-            print("Entre al form..............")
-            print("Entre al form..............")
-
-            # reservation.oficinaSalida  = Self.request.oficinaSalida
-            # reservation.oficinaLlegada = Self.request.oficinaLlegada
-            # reservation.vehiculo       = Self.request.vehiculo
 
             reservation.save()
             messages.success(request, 'La reserva se realizo con éxito!')
