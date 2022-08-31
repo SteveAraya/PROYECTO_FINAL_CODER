@@ -4,6 +4,12 @@ from django.shortcuts     import  render, redirect
 from django.contrib.auth  import logout
 from django.contrib       import messages
 
+#from App_Register.models import Avatar
+from django.utils.decorators        import method_decorator
+from django.contrib.auth.decorators import login_required
+
+from App_Register.models import Avatar
+
 # Create your views here.
 
 def Home(self):
@@ -29,9 +35,16 @@ def AboutUs(request):
 
     return render(request, "AboutUs.html", context)
 
-def AdminSite(self):
-    return render(self, "Admin.html")
+    
+@login_required
+def AdminSite(request):
+    try:
+        avatar=Avatar.objects.get(user=request.user.id)
+        return render(request, "Admin.html", {"url":avatar.avatar.url})
+    except:
+        return render(request, "Admin.html")
 
+ 
 def Logout(request):
     logout(request)
     messages.info(request, "Logged out successfully!")
@@ -39,3 +52,4 @@ def Logout(request):
 
 def PageNotFound(request, exception):
     return render(request, "PageNotFound.html")
+

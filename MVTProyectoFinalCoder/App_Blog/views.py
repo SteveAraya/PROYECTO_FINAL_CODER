@@ -6,9 +6,8 @@ from .forms import PostForm
 from django.contrib import messages
 from django.views.generic import DeleteView, UpdateView
 from django.core.paginator import Paginator
-
-# from django.utils.decorators        import method_decorator
-# from django.contrib.auth.decorators import login_required
+from App_Register.models import Avatar
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 #@method_decorator(login_required, name='dispatch')
@@ -35,7 +34,7 @@ def PostCreate(request):
         postformulario=PostForm()
     return render(request, "PostCreate.html", {"postformulario":postformulario})
 
-#@method_decorator(login_required, name='dispatch')
+@login_required
 def PostTable(request):
     posts     = Post.objects.all()
     contexto = {"posts": posts}

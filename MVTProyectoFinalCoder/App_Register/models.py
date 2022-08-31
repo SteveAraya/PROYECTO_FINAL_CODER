@@ -1,14 +1,9 @@
+from email.mime import image
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
-class Car(models.Model):
-    tipo               = models.CharField(max_length=50)
-    marca              = models.CharField(max_length=50)
-    modelo             = models.CharField(max_length=50)
-    placa              = models.CharField(max_length=50)
-    annio              = models.IntegerField()
-    tipo_caja          = models.CharField(max_length=50)
-    combustible        = models.CharField(max_length=50)
-    cantidad_pasajeros = models.IntegerField()
-    numero_puertas     = models.IntegerField()
+class Avatar(models.Model):
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    avatar= models.ImageField(upload_to='avatares', null=False, blank=True)
