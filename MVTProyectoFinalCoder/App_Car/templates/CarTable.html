@@ -23,6 +23,7 @@
               <th scope="col">Modelo</th>
               <th scope="col">Placa</th>
               <th scope="col">Año</th>
+              <th scope="col">Imagen</th>
               <th scope="col">Eliminar</th>
               <th scope="col">Editar</th>
             </tr>
@@ -36,6 +37,7 @@
               <td>{{car.modelo}}</td>
               <td>{{car.placa}}</td>
               <td>{{car.annio}}</td>
+              <td><img src="{{car.imagen.url}}" height="40px" alt=""></td>
               <td class="text-center">
                   <a href="{% url 'CarDelete' car.id %}">
                     <button class="btn btn-delete">

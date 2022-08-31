@@ -1,19 +1,23 @@
 from django import forms
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.core.exceptions import ValidationError
+
+from App_Register.models import Avatar
+ 
 
 class UserForm(UserCreationForm):
 
     first_name = forms.CharField(max_length=20, label=False) 
     last_name  = forms.CharField(max_length=30, label=False) 
     username   = forms.CharField(max_length=20, label=False) 
-    email      = forms.EmailField(max_length=100) 
+    email      = forms.EmailField(max_length=100)
+    #avatar     = forms.ImageField()
 
     class Meta:
         model  = User
-        fields = ('first_name','last_name', 'username', 'email', 'password1' ,'password2' )
+        fields = ('first_name','last_name', 'username', 'email', 'password1' ,'password2')
 
     def __init__(self, *args, **kwargs): 
         super().__init__(*args, **kwargs) 
@@ -80,3 +84,28 @@ class UserForm(UserCreationForm):
             'maxlength':'22',  
             'minlength':'8' 
         }) 
+
+        # self.fields['avatar'].widget.attrs.update({ 
+        #     'class': 'form-control', 
+        #     'required':'', 
+        #     'name':'avatar', 
+        #     'id':'avatar', 
+        #     'type':'file', 
+        #     'placeholder':'Cargar imagen de avatar', 
+        #     # 'maxlength':'22',  
+        #     # 'minlength':'8' 
+        # }) 
+
+class UserEditForm(UserChangeForm):
+    password=forms.Field(
+        help_text="",
+        widget=forms.HiddenInput(), required=False
+    )
+    class Meta:
+        model=User
+        fields=['email','first_name','last_name']
+
+class AvatarForm(forms.ModelForm):
+    class Meta:
+        model=Avatar
+        fields=("avatar",)
