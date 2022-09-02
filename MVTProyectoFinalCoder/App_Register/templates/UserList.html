@@ -1,0 +1,53 @@
+{% extends 'Admin.html'%}
+
+{% load static %}
+
+{% block bloqueQueCambia %}
+
+<style>
+  .container {
+    width: 90% !important;
+  }
+</style>
+
+<div class="container container-body">
+  <div class="d-flex justify-content-center h-100">
+
+    <div class="user_card">
+      <div class="table-title">
+        <h3 id="form-title">LISTA DE USUARIOS</h3>
+      </div>
+      <div class="justify-content-center form_container table-responsive">
+
+        <table class="table table-fixed">
+
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Nombre de Usuario</th>
+              <th scope="col">Correo Electronico</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for user in UserList %}
+            <tr>
+              <td>{{user.first_name}}</td>
+              <td>{{user.last_name}}</td>
+              <td>{{user.username}}</td>
+              <td>{{user.email}}</td>
+            </tr>
+            {% endfor %}
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock bloqueQueCambia %}
