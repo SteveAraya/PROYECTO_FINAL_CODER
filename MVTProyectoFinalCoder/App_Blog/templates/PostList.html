@@ -5,7 +5,7 @@
 {% block bloqueQueCambia %}
 
 <style>
-    .car-container-card {
+    .about-us-card {
         width: 750px;
         margin-top: auto;
         margin-bottom: auto;
@@ -16,66 +16,43 @@
         padding: 10px;
     }
 
-    a:link,
-    a:visited,
-    a:active {
-        text-decoration: none;
-    }
-
-    #form-title {
-        color: #1b201f;
+    .card-blog {
+        margin-top: auto;
+        margin-bottom: auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        background: #1b201f;
+        border-radius: 15px;
+        text-align: center;
+        border: 1px solid #1c8fb5;
+        height: 160px;
     }
 
     .title {
         color: #1b201f;
     }
 
-    .title-history {
-        color: #1c8fb5 !important;
-    }
-
     .title-card {
         color: white;
+        font-size: 1.2rem;
     }
 
     .card-subtitle {
         color: white;
+        font-size: 1.0rem;
     }
 
     .our-team {
         padding: 20px 15px 30px;
-        background: #1b201f;
-        border-radius: 15px;
         text-align: center;
-        border: 1px solid #1c8fb5;
-
+        height: 620px !important;
     }
 
-    .our-team:hover {
+    .card-blog:hover {
         transition: .5s;
         box-shadow: 0px 1px 5px 0px #d1d1d1;
-    }
-
-    .our-team .pic {
-        display: inline-block;
-        width: 100%;
-        height: 100%;
-        background: white;
-        padding: 5px;
-        margin-bottom: 25px;
-        transition: all 0.5s ease 0s;
-        border-radius: 50%;
-    }
-
-    .our-team:hover .pic {
-        background: #1c8fb5;
-        border-radius: 50%;
-    }
-
-    .pic img {
-        width: 100%;
-        height: auto;
-        border-radius: 50%;
     }
 
     .our-team .title {
@@ -95,39 +72,6 @@
         margin-bottom: 15px;
     }
 
-    .post-histoy {
-        text-transform: none !important;
-        color: white !important;
-    }
-
-    .our-team .social {
-        padding: 0;
-        margin: 0;
-        list-style: none;
-    }
-
-    .our-team .social li {
-        display: inline-block;
-        margin-right: 5px;
-    }
-
-    .our-team .social li a {
-        display: block;
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
-        border-radius: 50%;
-        font-size: 15px;
-        color: #1c8fb5;
-        border: 1px solid #1c8fb5;
-        transition: all 0.5s ease 0s;
-    }
-
-    .our-team:hover .social li a {
-        background: #1c8fb5;
-        color: white;
-    }
-
     @media only screen and (max-width: 990px) {
         .our-team {
             margin-bottom: 30px;
@@ -136,7 +80,7 @@
 
     .card {
         gap: 10px !important;
-        max-width: 220px !important;
+        max-width: 500px !important;
     }
 
     .card:hover {
@@ -147,6 +91,7 @@
     .btn-details {
         background-color: #1c8fb5;
         color: white;
+        /* margin-top: 30px; */
     }
 
     .btn-details:hover {
@@ -163,10 +108,6 @@
         background-color: white;
         border-color: #1c8fb5;
         color: #1c8fb5;
-    }
-
-    .history {
-        height: 552px !important;
     }
 
     .car-card-passengers {
@@ -187,22 +128,6 @@
         display: flex;
         -webkit-box-align: end;
         align-items: flex-end;
-    }
-
-    .car-card-ul {
-        -webkit-text-size-adjust: 100%;
-        font-weight: 400;
-        -webkit-font-smoothing: antialiased;
-        font-family: Poppins, sans-serif;
-        color: white;
-        font-size: 1em;
-        line-height: 1.35em;
-        box-sizing: border-box;
-        margin-top: 0;
-        margin-bottom: 0;
-        list-style-type: none;
-        display: flex;
-        padding-left: 0;
     }
 
     .car-card-passengers-txt {
@@ -231,56 +156,69 @@
         border-color: #1c8fb5 !important;
         color: #1c8fb5 !important;
     }
+
 </style>
 
 <div class="container container-body">
     <div class="d-flex justify-content-center h-100">
-        <div class="car-container-card">
 
+        <div class="about-us-card">
             <div class="d-flex justify-content-center">
-                <h3 id="form-title">Posts</h3>
+
+                <div class="container">
+                    <h3 id="title" class="text-uppercase">Blog</h3>
+                </div>
+                <div class="container text-justify">
+                    <p>Te damos la bienvenida a nuestra sección de blogs,
+                        en esta encontraras temas que podrían ser de gran
+                        utilidad.</p>
+                </div>
             </div>
 
-            <div class="card-deck">
-                
-                <!-- <form method="GET">
-                    <button type="submit" value="Viajes" class="btn btn-search">Viajes</button>
-                    <button type="submit" value="Estilo de vida" class="btn btn-search">Estilo de vida</button>
-                    <button type="submit" value="Vehiculos" class="btn btn-search">Vehiculos</button>
-                </form> -->
-                <div>
-                <a href="{% url 'Categoria' 'Viajes' %}" class="btn btn-search">Vieajes</a>
-                <a href="{% url 'Categoria' 'Estilo de vida' %}" class="btn btn-search">Estilo de vida</a>
-                <a href="{% url 'Categoria' 'Vehiculos' %}" class="btn btn-search">Vehiculos</a>
+            <br>
+
+            <div class="our-team">
+
+                <div class="mb-5">
+                    <a href="{% url 'PostList' %}" class="btn btn-search">Todos</a>
+                    <a href="{% url 'Categoria' 'Viajes' %}" class="btn btn-search">Viajes</a>
+                    <a href="{% url 'Categoria' 'Estilo de vida' %}" class="btn btn-search">Estilo de vida</a>
+                    <a href="{% url 'Categoria' 'Vehiculos' %}" class="btn btn-search">Vehículos</a>
                 </div>
-                {% for post in posts %}
 
-                <div class="card our-team mt-5" style="width: 18rem !important;">
-                    <h4 class="title-card">{{post.titulo}}</h4>
-                    <h5 class="card-subtitle">{{post.sub_titulo}}</h5>
-                    <img src="{{post.imagen.url}}" class="card-img-top" alt="imagen-auto" height="190px">
+                <div class="row">
 
-                    <div class="car-card-icons-cont txt-marino ml-4">
+                    {% for post in posts %}
 
-                        <div class="car-card-trans">
-                            <div class="car-card-passengers-txt">
-                                {{post.cuerpo|slice:":10"}}...
+                    <div class="col-md-12 col-sm-6 card-blog mb-3">
+
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6 d-flex align-items-center">
+                                <img src="{{post.imagen.url}}" alt="imagen-auto" height="90px">
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <h4 class="title-card">{{post.titulo}}</h4>
+                                <h5 class="card-subtitle text-muted">{{post.sub_titulo}}</h5>
+                                <div class="card-footer text-muted">
+                                    <span>Creado el: {{post.fecha}}</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6 d-flex align-items-center">
+                                <form action="{% url 'PostDetail' post.id %}" method="GET">
+                                    <button type="submit" class="btn btn-details">
+                                        Ver detalles
+                                    </button>
+                                </form>
                             </div>
                         </div>
+
                     </div>
 
-                    <form action="{% url 'PostDetail' post.id %}" method="GET">
-                        <button type="submit" class="btn btn-details">
-                            Ver detalles
-                        </button>
-                    </form>
-                    <div class="card-footer text-muted">
-                        <span>Creado el: {{post.fecha}}</span>
-                      </div>
+                    {% endfor %}
 
                 </div>
-
-                {% endfor %}
 
             </div>
 
@@ -292,7 +230,8 @@
                             <a class="page-link options-nav-back" href="?page=1">Primera</a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link options-nav-back" href="?page={{ posts.previous_page_number }}">&laquo;</a>
+                            <a class="page-link options-nav-back"
+                                href="?page={{ posts.previous_page_number }}">&laquo;</a>
                         </li>
                         {% endif %}
 
@@ -308,7 +247,8 @@
                             <a class="page-link options-nav-next" href="?page={{ posts.next_page_number }}">&raquo; </a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link options-nav-next" href="?page={{ posts.paginator.num_pages }}">Última</a>
+                            <a class="page-link options-nav-next"
+                                href="?page={{ posts.paginator.num_pages }}">Última</a>
                         </li>
                         {% endif %}
                     </ul>
