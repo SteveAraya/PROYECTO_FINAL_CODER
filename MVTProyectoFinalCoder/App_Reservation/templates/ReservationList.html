@@ -1,0 +1,65 @@
+{% extends 'Admin.html'%}
+
+{% load static %}
+
+{% block bloqueQueCambia %}
+
+<style>
+  .container {
+    width: 90% !important;
+  }
+</style>
+
+<div class="container container-body">
+  <div class="d-flex justify-content-center h-100">
+
+    <div class="user_card">
+      <div class="table-title">
+        <h3 id="form-title">LISTA DE RESERVAS</h3>
+      </div>
+      <div class="justify-content-center form_container table-responsive">
+
+        <table class="table table-fixed">
+
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Oficina Salida</th>
+              <th scope="col">Fecha y Hora Salida</th>
+              <th scope="col">Oficina Llegada</th>
+              <th scope="col">Fecha y Hora Llegada</th>
+              <th scope="col">Vehículo</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Identificación</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">Edad</th>
+              <th scope="col">Correo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for reservation in ReservationList %}
+            <tr>
+              <td>{{reservation.oficinaSalida.nombre}}</td>
+              <td>{{reservation.fechaSalida}} || {{reservation.horaSalida}}</td>
+              <td>{{reservation.oficinaLlegada.nombre}}</td>
+              <td>{{reservation.fechaLlegada}} || {{reservation.horaLlegada}}</td>
+              <td>{{reservation.vehiculo.placa}}</td>
+              <td>{{reservation.nombreConductor}}</td>
+              <td>{{reservation.identificacionConductor}}</td>
+              <td>{{reservation.telefonoConductor}}</td>
+              <td>{{reservation.edadConductor}}</td>
+              <td>{{reservation.correoConductor}}</td>
+            </tr>
+            {% endfor %}
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock bloqueQueCambia %}

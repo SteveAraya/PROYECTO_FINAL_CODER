@@ -7,6 +7,9 @@ from App_Car.models         import Car
 from App_Reservation.models import Reservation
 from App_Reservation.forms  import ReservationForm
 
+from django.utils.decorators        import method_decorator
+from django.contrib.auth.decorators import login_required
+
 from django.contrib         import messages
 
 # Create your views here.
@@ -48,3 +51,10 @@ def CreateReservation(request):
 
     else:
         return render(request, "Reservation.html", contexto)
+
+@method_decorator(login_required, name='dispatch')
+class ReservationList(ListView):
+
+    model               = Reservation
+    template_name       = './ReservationList.html'
+    context_object_name = 'ReservationList'
