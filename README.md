@@ -1,17 +1,28 @@
 # Proyecto final CoderHouse
-    Plataforma web para la reserva de vehículos automotores. Además, la misma cuenta con una sección de Posts (tipo Blog), donde se pueden
-    encontrar distintos artículos relacioandos al ambito del alquiler de vehículos como ser, aspectos a tener en cuenta a la hora de alquilar un vehículo, como contratar seguros, que viajes hacer durante las vacaciones, entre otros.
+    Plataforma web para la reserva de vehículos automotores. Además, la misma cuenta con una sección de Posts (tipo Blog), 
+    donde se pueden encontrar distintos artículos relacioandos al ambito del alquiler de vehículos como ser, 
+    aspectos a tener en cuenta a la hora de alquilar un vehículo, como contratar seguros, que viajes hacer durante las vacaciones, 
+    entre otros.
 
 ## Estudiantes:
     Adrián Figueroa.
     Adelso Steve Araya Solórzano.
 
 ## Tareas realizadas por cada itegrante:
-    *Adrián Figueroa:
-    Apps de Blogs y Vehiculos, CRUD completos en cada una de ellas. Edición de datos de usuarios. Carga de imagenes de 
-    avatar para cada usuario. Tareas generales de relacionadas al diseño de las plantillas con HTML y CSS.
-    *Adelso Steve Araya Solórzano:
-    Apps de Oficinas, Contactenos y Reservación, CRUD completos en cada una de ellas. Creación del sistema de reservas. Diseño de la Home Page. Creación del sistema de Login de usuarios.
+### Adrián Figueroa:
+- Apps de Blogs y Vehiculos, CRUD completos en cada una de ellas. 
+- Edición de datos de usuarios. 
+- Carga de imagenes de avatar para cada usuario. 
+- Tareas generales de relacionadas al diseño de las plantillas con HTML y CSS.
+
+### Adelso Steve Araya Solórzano:
+- Vista de inicio del home page.
+- Vista y proceso de Reservas, desde la vista del cliente hasta la vista del admin. 
+- Vista y proceso de Oficinas, desde la vista del cliente hasta la vista del admin.
+- Vista y proceso de Contactenos, desde la vista del cliente hasta la vista del admin.
+- Vista Nosotros.
+- Vista Login.
+- Registro de usuarios. Vista de mostrar usuarios. 
 
 ## Estructura del proyecto
 ### Modelo Vehiculos:
@@ -63,39 +74,3 @@
 Cada reservación requiere agregar un vehiculo y una oficina en la cual el cliente
 va a realizar la reserva del vehiculo. Cada modelo de Reservacion requiere un VehiculoID y
 una OficinaID para poder crear la reserva.
-
-## Vista Home: 
-
-![Screenshot](./Evidencias/Home.png)
-
-## Crear Vehiculo: 
-
-![Screenshot](./Evidencias/CrearVehiculo.png)
-
-## Listar Vehiculos: 
-
-![Screenshot](./Evidencias/ListarVehiculos.png)
-
-## Buscar Vehiculo: 
-
-![Screenshot](./Evidencias/BuscarVehiculo.png)
-
-## Resultado Vehiculo: 
-
-![Screenshot](./Evidencias/ResultadoVehiculo.png)
-
-## Crear Oficina: 
-
-![Screenshot](./Evidencias/CrearOficina.png)
-
-## Listar Oficinas: 
-
-![Screenshot](./Evidencias/ListarOficina.png)
-
-## Contactenos: 
-
-![Screenshot](./Evidencias/Contactenos.png)
-
-## Listar Consultas: 
-
-![Screenshot](./Evidencias/ListarConsultas.png)
