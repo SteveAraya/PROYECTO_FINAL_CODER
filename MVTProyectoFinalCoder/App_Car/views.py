@@ -5,6 +5,8 @@ from .forms import CarForm
 from .models import Car
 from django.contrib import messages
 
+from App_Register.models import Avatar
+
 # from django.utils.decorators        import method_decorator
 # from django.contrib.auth.decorators import login_required
 
@@ -16,6 +18,7 @@ from django.views.generic import DeleteView, UpdateView
 #Vista para la creación de vehículos (solo administradores)
 #@method_decorator(login_required, name='dispatch')
 def CarCreate(request):
+
     if(request.method=="POST"):
         carformulario = CarForm(request.POST, request.FILES)
         if(carformulario.is_valid()):
@@ -40,17 +43,28 @@ def CarCreate(request):
             )
             car.save()
             messages.success(request, 'El vehículo fue creado con éxito!')
+            
             return render(request, "CarCreate.html")
     else:
         carformulario=CarForm()
-    return render(request, "CarCreate.html", {"carformulario":carformulario})
+
+    try:
+        avatar = Avatar.objects.get(user=request.user.id)
+        return render(request, "CarCreate.html", {"carformulario":carformulario, "url":avatar.avatar.url})
+    except:
+        return render(request, "CarCreate.html", {"carformulario":carformulario})
 
 #Vista para ver una tabla con todos los vehículos de la base de datos (solo administradores)
 #@method_decorator(login_required, name='dispatch')
 def CarTable(request):
     cars     = Car.objects.all()
     contexto = {"cars": cars}
-    return render(request, "CarTable.html", contexto )
+
+    try:
+        avatar = Avatar.objects.get(user=request.user.id)
+        return render(request, "CarTable.html", {"cars": cars, "url":avatar.avatar.url})
+    except:
+        return render(request, "CarTable.html", contexto)
 
 #@method_decorator(login_required, name='dispatch')
 class CarDelete(DeleteView):

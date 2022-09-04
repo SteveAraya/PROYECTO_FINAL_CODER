@@ -41,7 +41,11 @@ def Register(request):
 
         form = UserForm()
 
-    return render(request, "Register.html", {"registerForm": form})
+    try:
+        avatar = Avatar.objects.get(user=request.user.id)
+        return render(request, "Register.html", {"registerForm": form, "url":avatar.avatar.url})
+    except:
+        return render(request, "Register.html", {"registerForm": form})
     
 @login_required
 def UserEdit(request):
@@ -58,25 +62,41 @@ def UserEdit(request):
             return render(request,"UserEdit.html", {'userform':userform} )
     else:
         userform=UserEditForm(instance=request.user)
-    return render(request, "UserEdit.html", {'userform':userform})
+
+    try:
+        avatar = Avatar.objects.get(user=request.user.id)
+        return render(request, "UserEdit.html", {"userform": userform, "url":avatar.avatar.url})
+    except:
+        return render(request, "UserEdit.html", {"userform": userform})
 
 @login_required
 def AddAvatar(request):
     if(request.method=='POST'):
+
         avatarform=AvatarForm(request.POST, request.FILES)
+
         if(avatarform.is_valid()):
-            data=avatarform.cleaned_data
-            user=avatarform.save()
-            user.usuario.avatar=data
-            user.usuario.save()
-            # avatar=Avatar(user=request.user, avatar=data["avatar"])
-            # avatar.refresh_from_db
+
+            try:
+                record = Avatar.objects.get(user_id = request.user.id)
+                if record.id:
+                    record.delete()
+            except:
+                print("Error, intente de nuevo...")
+
+            data   = avatarform.cleaned_data
+            avatar = Avatar(user=request.user, avatar = data["avatar"])
+            avatar.save()
             messages.success(request, "Avatar agregado con éxito!")
-            #return render(request,"Admin.html")
             return redirect('AdminSite')
     else:
         avatarform=AvatarForm()
-    return render(request, "AddAvatar.html", {"avatarform": avatarform})
+
+    try:
+        avatar = Avatar.objects.get(user=request.user.id)
+        return render(request, "AddAvatar.html", {"avatarform": avatarform, "url":avatar.avatar.url})
+    except:
+        return render(request, "AddAvatar.html", {"avatarform": avatarform})
 
 @method_decorator(login_required, name='dispatch')
 class UserList(ListView):

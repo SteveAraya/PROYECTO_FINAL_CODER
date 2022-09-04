@@ -32,22 +32,34 @@ def PostCreate(request):
             return redirect('/blog/create')
     else:
         postformulario=PostForm()
-    return render(request, "PostCreate.html", {"postformulario":postformulario})
+
+    try:
+        avatar = Avatar.objects.get(user=request.user.id)
+        return render(request, "PostCreate.html", {"postformulario": postformulario, "url":avatar.avatar.url})
+    except:
+        return render(request, "PostCreate.html")
 
 @login_required
 def PostTable(request):
     posts     = Post.objects.all()
     contexto = {"posts": posts}
-    return render(request, "PostTable.html", contexto )
+
+    try:
+        avatar = Avatar.objects.get(user=request.user.id)
+        return render(request, "PostTable.html", {"posts": posts, "url":avatar.avatar.url})
+    except:
+        return render(request, "PostTable.html", contexto)
 
 #@method_decorator(login_required, name='dispatch')
 class PostDelete(DeleteView):
+
     model         = Post
     template_name = "PostDelete.html"
     success_url   = "/blog/table"
 
 #@method_decorator(login_required, name='dispatch')
 class PostUpdate(UpdateView):
+
     model         = Post
     template_name = "PostEdit.html"
     fields        = "__all__"

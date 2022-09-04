@@ -69,37 +69,36 @@
                             <label class="info-label" for="validationTooltip01">Categoria: </label>
                             <select class="form-control" name="categoria" aria-label="Default select example" required>
                                 <option value="">Seleccione una categoria</option>
-                                <option value="Coche">Coche</option>
-                                <option value="Vehiculo de carga">Vehiculo de carga</option>
-                                <option value="Vehiculo utilitario">Vehiculo utilitario</option>
-                                <option value="Vehiculo de transporte de pasajeros">Vehiculo de transporte de pasajeros
-                                </option>
+                                <option {% if car.categoria == 'Coche' %} selected="selected" {% endif %} value="Coche">Coche</option>
+                                <option {% if car.categoria == 'Vehiculo de carga' %} selected="selected" {% endif %} value="Vehiculo de carga">Vehiculo de carga</option>
+                                <option {% if car.categoria == 'Vehiculo utilitario' %} selected="selected" {% endif %} value="Vehiculo utilitario">Vehiculo utilitario</option>
+                                <option {% if car.categoria == 'Vehiculo de transporte de pasajeros' %} selected="selected" {% endif %} value="Vehiculo de transporte de pasajeros">Vehiculo de transporte de pasajeros</option>
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label class="info-label" for="validationTooltip01">Tipo: </label>
                             <select class="form-control" name="tipo" aria-label="Default select example" required>
                                 <option selected>Seleccione un tipo</option>
-                                <option value="Sedan">Sedan</option>
-                                <option value="Compacto">Compacto</option>
-                                <option value="Peugeot">Camioneta</option>
-                                <option value="Furgon">Furgon</option>
-                                <option value="SUV">SUV</option>
-                                <option value="Van">Van</option>
+                                <option {% if car.tipo == 'Sedan' %} selected="selected" {% endif %} value="Sedan">Sedan</option>
+                                <option {% if car.tipo == 'Compacto' %} selected="selected" {% endif %} value="Compacto">Compacto</option>
+                                <option {% if car.tipo == 'Peugeot' %} selected="selected" {% endif %} value="Peugeot">Camioneta</option>
+                                <option {% if car.tipo == 'Furgon' %} selected="selected" {% endif %} value="Furgon">Furgon</option>
+                                <option {% if car.tipo == 'SUV' %} selected="selected" {% endif %} value="SUV">SUV</option>
+                                <option {% if car.tipo == 'Van' %} selected="selected" {% endif %} value="Van">Van</option>
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label class="info-label" for="validationTooltip01">Marca: </label>
                             <select class="form-control" name="marca" aria-label="Default select example" required>
-                                <option selected>Seleccione una marca</option>
-                                <option value="Ford">Ford</option>
-                                <option value="Chevrolet">Chevrolet</option>
-                                <option value="Peugeot">Peugeot</option>
-                                <option value="Citroen">Citroen</option>
-                                <option value="Toyota">Toyota</option>
-                                <option value="Suzuki">Suzuki</option>
-                                <option value="Nissan">Nissan</option>
-                                <option value="Volswagen">Volswagen</option>
+                                <option >Seleccione una marca</option>
+                                <option {% if car.marca == 'Ford' %} selected="selected" {% endif %} value="Ford">Ford</option>
+                                <option {% if car.marca == 'Chevrolet' %} selected="selected" {% endif %} value="Chevrolet">Chevrolet</option>
+                                <option {% if car.marca == 'Peugeot' %} selected="selected" {% endif %} value="Peugeot">Peugeot</option>
+                                <option {% if car.marca == 'Citroen' %} selected="selected" {% endif %} value="Citroen">Citroen</option>
+                                <option {% if car.marca == 'Toyota' %} selected="selected" {% endif %} value="Toyota">Toyota</option>
+                                <option {% if car.marca == 'Suzuki' %} selected="selected" {% endif %} value="Suzuki">Suzuki</option>
+                                <option {% if car.marca == 'Nissan' %} selected="selected" {% endif %} value="Nissan">Nissan</option>
+                                <option {% if car.marca == 'Volswagen' %} selected="selected" {% endif %} value="Volswagen">Volswagen</option>
                             </select>
                         </div>
                     </div>
@@ -128,8 +127,8 @@
                             <label class="info-label" for="validationTooltip01">Tipo de Caja: </label>
                             <select class="form-control" name="tipo_caja" aria-label="Default select example" required>
                                 <option selected>Seleccione el tipo de caja</option>
-                                <option value="Manual">Manual</option>
-                                <option value="Automatica">Automatica</option>
+                                <option {% if car.tipo_caja == 'Manual' %} selected="selected" {% endif %} value="Manual">Manual</option>
+                                <option {% if car.tipo_caja == 'Automatica' %} selected="selected" {% endif %} value="Automatica">Automatica</option>
                             </select>
                         </div>
                         <!-- Combustible input-->
@@ -138,11 +137,11 @@
                             <select class="form-control" name="combustible" aria-label="Default select example"
                                 required>
                                 <option selected>Seleccione el tipo de combustible</option>
-                                <option value="Diesel">Diesel</option>
-                                <option value="Gasolina">Gasolina</option>
-                                <option value="Gas">Gas</option>
-                                <option value="Electrico">Electrico</option>
-                                <option value="Hibrido">Hibrido</option>
+                                <option {% if car.combustible == 'Diesel' %} selected="selected" {% endif %} value="Diesel">Diesel</option>
+                                <option {% if car.combustible == 'Gasolina' %} selected="selected" {% endif %} value="Gasolina">Gasolina</option>
+                                <option {% if car.combustible == 'Gas' %} selected="selected" {% endif %} value="Gas">Gas</option>
+                                <option {% if car.combustible == 'Electrico' %} selected="selected" {% endif %} value="Electrico">Electrico</option>
+                                <option {% if car.combustible == 'Hibrido' %} selected="selected" {% endif %} value="Hibrido">Hibrido</option>
                             </select>
                         </div>
                     </div>
@@ -164,17 +163,17 @@
                         <!-- Control Crucero-->
                         <div class="col-md-4 mb-3">
                             <label class="info-label" for="validationTooltip01">Control Crucero: </label>
-                            <input class="form-check-input" name="control_crucero" type="checkbox">
+                            <input class="form-check-input" name="control_crucero" {% if car.control_crucero == True %} checked="checked" {% endif %} type="checkbox">
                         </div>
                         <!-- Radio AM/FM-->
                         <div class="col-md-4 mb-3">
                             <label class="info-label" for="validationTooltip01">Sistema de radio AM/FM: </label>
-                            <input class="form-check-input" name="radio" type="checkbox">
+                            <input class="form-check-input" name="radio" {% if car.radio == True %} checked="checked" {% endif %} type="checkbox">
                         </div>
                         <!-- Aire Acondicionado-->
                         <div class="col-md-4 mb-3">
                             <label class="info-label" for="validationTooltip01">Aire Acondicionado: </label>
-                            <input class="form-check-input" name="aacond" type="checkbox">
+                            <input class="form-check-input" name="aacond" {% if car.aacond == True %} checked="checked" {% endif %} type="checkbox">
                         </div>
                     </div>
 
@@ -182,12 +181,12 @@
                         <!-- Bluetooth-->
                         <div class="col-md-6 mb-3">
                             <label class="info-label" for="validationTooltip01">Conectividad Bluetooth: </label>
-                            <input class="form-check-input" name="bluetooth" type="checkbox">
+                            <input class="form-check-input" name="bluetooth" {% if car.bluetooth == True %} checked="checked" {% endif %} type="checkbox">
                         </div>
                         <!-- Cierre centralizado de puertas-->
                         <div class="col-md-6 mb-3">
                             <label class="info-label" for="validationTooltip01">Cierre Centralizado de Puertas: </label>
-                            <input class="form-check-input" name="cierrepuertas" type="checkbox">
+                            <input class="form-check-input" name="cierrepuertas" {% if car.cierrepuertas == True %} checked="checked" {% endif %} type="checkbox">
                         </div>
                     </div>
 
@@ -198,8 +197,11 @@
                                 <label class="custom-file-label" name="imagen" for="customFileLang">
                                     Seleccionar un Archivo
                                 </label>
-                                <input type="file" name="imagen" class="custom-file-input" id="customFileLang"
-                                    lang="es" value="{{car.imagen}}">
+                                <input type="file" 
+                                       name="imagen" 
+                                       class="custom-file-input" 
+                                       id="customFileLang"
+                                       lang="es" value="{{car.imagen}}">
                             </div>
                         </div>
                     </div>

@@ -35,12 +35,12 @@
         color: white !important;
     }
 
-    .textarea-container{
+    .textarea-container {
         height: 150px !important;
         margin-bottom: 10px !important;
     }
 
-    .custom-file{
+    .custom-file {
         padding-bottom: 40px !important;
     }
 
@@ -66,28 +66,28 @@
 
         <div class="user_card">
             <div class="d-flex justify-content-center text-center">
-                <h3 id="form-title">CREAR BLOG</h3>
+                <h3 id="form-title">EDITAR BLOG</h3>
             </div>
             <div class="justify-content-center form_container">
 
-                <form action="{% url 'PostCreate' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <form method="POST" enctype="multipart/form-data">{% csrf_token %}
 
                     <div class="form-row">
                         <!-- Categoria input-->
                         <div class="col-md-6 mb-3">
                             <label class="info-label" for="validationTooltip01">Categoria: </label>
                             <select class="form-control" name="categoria" aria-label="Default select example" required>
-                                <option value="">Seleccione una categoria</option>
-                                <option value="Estilo de vida">Estilo de vida</option>
-                                <option value="Viajes">Viajes</option>
-                                <option value="Vehiculos">Vehiculos</option>
+                                <option value="">Seleccione una categoria </option>
+                                <option {% if post.categoria == 'Estilo de vida' %} selected="selected" {% endif %} value="Estilo de vida">Estilo de vida</option>
+                                <option {% if post.categoria == 'Viajes' %} selected="selected" {% endif %} value="Viajes">Viajes</option>
+                                <option {% if post.categoria == 'Vehiculos' %} selected="selected" {% endif %} value="Vehiculos">Vehiculos</option>
                             </select>
                         </div>
+                        <!-- Fecha input-->
                         <div class="col-md-6 mb-3">
                             <label class="info-label" for="validationTooltip01">Fecha: </label>
-                            <input class="form-control" name="fecha" type="date" required value="{{post.fecha}}">
+                            <input class="form-control" name="fecha" type="date" required value="{{post.fecha|date:"Y-m-d"}}">
                         </div>
-                        <!-- Fecha input-->
                     </div>
 
                     <div class="form-row">
@@ -104,7 +104,9 @@
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             <label class="info-label" for="validationTooltip01">Cuerpo del Blog: </label>
-                            <textarea class="form-control textarea-container" name="cuerpo" cols="30" rows="10" required value="{{post.cuerpo}}"></textarea>
+                            <textarea class="form-control textarea-container" name="cuerpo" cols="30" rows="10" required>
+                                {{post.cuerpo}}
+                            </textarea>
                         </div>
                     </div>
 
@@ -115,29 +117,30 @@
                                 <label class="custom-file-label" name="imagen" for="customFileLang">
                                     Seleccionar un Archivo
                                 </label>
-                                <input type="file" name="imagen" class="custom-file-input" id="customFileLang" lang="es" value="{{post.imagen.url}}">
+                                <input type="file" name="imagen" class="custom-file-input" id="customFileLang" lang="es"
+                                    value="{{post.imagen}}">
                             </div>
                         </div>
                     </div>
 
-<!-- Submit Button-->
+                    <!-- Submit Button-->
 
-<div class="form-row text-center">
-    <!-- Volver-->
-    <div class="col-md-6 mb-3">
-        <div class="d-flex justify-content-center mt-4 login_container text-center">
-            <a href="{% url 'PostTable' %}" class="btn delete_btn">
-                Volver
-            </a>
-        </div>
-    </div>
-    <!-- Actualizar-->
-    <div class="col-md-6 mb-3">
-        <div class="d-flex justify-content-center mt-4 login_container text-center">
-            <input class="btn main_btn" type="submit" value="Editar">
-        </div>
-    </div>
-</div>
+                    <div class="form-row text-center">
+                        <!-- Volver-->
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex justify-content-center mt-4 login_container text-center">
+                                <a href="{% url 'PostTable' %}" class="btn delete_btn">
+                                    Volver
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Actualizar-->
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex justify-content-center mt-4 login_container text-center">
+                                <input class="btn main_btn" type="submit" value="Editar">
+                            </div>
+                        </div>
+                    </div>
 
                 </form>
                 <br>

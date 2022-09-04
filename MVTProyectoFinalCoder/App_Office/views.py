@@ -28,13 +28,6 @@ class OfficeCreate(CreateView):
     ]
     success_url   = '/office/officeList/' 
 
-# class OfficeUpdate(UpdateView):
-
-#     model = Office
-#     template_name = './Office/Office_update.html'
-#     fields = ('__all__')
-#     success_url = '/OfficeList/'
-
 class OfficeDelete(DeleteView):
 
     model         = Office

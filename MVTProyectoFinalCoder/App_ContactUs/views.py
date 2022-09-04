@@ -10,6 +10,10 @@ from django.contrib.auth.decorators import login_required
 
 from django.contrib import messages
 
+from App_Register.models import Avatar
+
+from django.contrib.auth.models import User
+
 # Create your views here.
 
 #------------------- ContactUS VIEWS -------------------#
@@ -40,6 +44,8 @@ def ContactUS(request):
 
 @method_decorator(login_required, name='dispatch')
 class ContactUsList(ListView):
+
+    # avatar = Avatar.objects.get(user=ListView.request.user.id)
 
     model               = Contact
     template_name       = './ContactUsList.html'

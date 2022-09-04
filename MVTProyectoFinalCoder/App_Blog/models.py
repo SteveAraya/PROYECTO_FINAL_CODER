@@ -8,7 +8,7 @@ class Post(models.Model):
     categoria = models.CharField(max_length=50, null=True)
     titulo = models.CharField(max_length=50)
     sub_titulo = models.CharField(max_length=50)
-    cuerpo = models.CharField(max_length=500)
+    cuerpo = models.CharField(max_length=5000)
     #autor = models.ManyToManyField(User, on_delete=models.CASCADE)
     fecha = models.DateField(auto_now=False, auto_now_add=False)
     imagen = models.ImageField(upload_to='blog', blank=True, null=True)
