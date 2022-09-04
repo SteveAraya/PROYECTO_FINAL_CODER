@@ -13,7 +13,6 @@ class UserForm(UserCreationForm):
     last_name  = forms.CharField(max_length=30, label=False) 
     username   = forms.CharField(max_length=20, label=False) 
     email      = forms.EmailField(max_length=100)
-    #avatar     = forms.ImageField()
 
     class Meta:
         model  = User
@@ -85,17 +84,6 @@ class UserForm(UserCreationForm):
             'minlength':'8' 
         }) 
 
-        # self.fields['avatar'].widget.attrs.update({ 
-        #     'class': 'form-control', 
-        #     'required':'', 
-        #     'name':'avatar', 
-        #     'id':'avatar', 
-        #     'type':'file', 
-        #     'placeholder':'Cargar imagen de avatar', 
-        #     # 'maxlength':'22',  
-        #     # 'minlength':'8' 
-        # }) 
-
 class UserEditForm(UserChangeForm):
     password=forms.Field(
         help_text="",
@@ -104,6 +92,39 @@ class UserEditForm(UserChangeForm):
     class Meta:
         model=User
         fields=['email','first_name','last_name']
+
+    def __init__(self, *args, **kwargs): 
+        super().__init__(*args, **kwargs) 
+        self.fields['first_name'].widget.attrs.update({ 
+            'class': 'form-control', 
+            'required':'', 
+            'name':'first_name', 
+            'id':'first_name', 
+            'type':'text', 
+            'placeholder':'Nombre', 
+            'maxlength': '20', 
+            'minlength': '3', 
+        }) 
+
+        self.fields['last_name'].widget.attrs.update({ 
+            'class': 'form-control', 
+            'required':'', 
+            'name':'last_name', 
+            'id':'last_name', 
+            'type':'text', 
+            'placeholder':'Apellidos', 
+            'maxlength': '30', 
+            'minlength': '3', 
+        }) 
+
+        self.fields['email'].widget.attrs.update({ 
+            'class': 'form-control', 
+            'required':'', 
+            'name':'email', 
+            'id':'email', 
+            'type':'email', 
+            'placeholder':'example@gmail.com', 
+        }) 
 
 class AvatarForm(forms.ModelForm):
     class Meta:
