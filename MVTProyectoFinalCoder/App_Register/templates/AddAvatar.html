@@ -3,21 +3,55 @@
 {% block bloqueQueCambia %}
 
 <style>
-    .form-floating {
+    .form_container {
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+    }
+
+    .delete_btn {
+        width: 50% !important;
+        background: red !important;
+        color: white !important;
+    }
+
+    .delete_btn:hover {
+        background: #fff !important;
+        color: red !important;
+    }
+
+    .delete_btn:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+    }
+
+    p{
+        color: white;
+        font-size: 1.7rem;
+    }
+
+    .container-body{
+        width: 500px;
+    }
+
+    .user_card{
+        height: 300px !important;
+    }
+
+    /* .form-floating {
         padding-bottom: 20px !important;
-    }
+    } */
 
-    .container {
+    /* .container {
         width: 900px;
-    }
+    } */
 
-    .user_card {
+    /* .user_card {
         height: 750px !important;
-    }
+    } */
 
-    .form-control {
+    /* .form-control {
         height: 35PX !important;
-    }
+    } */
 
     .info-label {
         color: white !important;
@@ -35,19 +69,39 @@
         color: white !important;
     }
 
-    .textarea-container{
-        height: 150px !important;
-        margin-bottom: 10px !important;
-    }
-
-    .custom-file{
+    .custom-file {
         padding-bottom: 40px !important;
     }
 </style>
-            <form method="POST" enctype="multipart/form-data">{% csrf_token %}
-                <p required>{{avatarform.as_p}}</p>
-                <input type="submit" value="Editar">
-            </form>
+
+<div class="container container-body">
+    <div class="d-flex justify-content-center h-100">
+
+        <div class="user_card">
+            <div class="d-flex justify-content-center text-center">
+                <h3 id="form-title">SELECCIONAR AVATAR</h3>
+            </div>
+            <div class="justify-content-center form_container text-center">
+
+                <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    <p required>{{avatarform.as_p}}</p>
+
+                    <br>
+
+                    <div class="d-flex justify-content-center mt-4 login_container">
+                        <a href="{% url 'UserEdit' %}" class="btn main_btn delete_btn">
+                            Volver
+                        </a>
+                    </div>
+
+                    <br>
+
+                    <!-- Submit Button-->
+                    <div class="d-flex justify-content-center mt-4 login_container text-center">
+                        <input class="btn main_btn" type="submit" value="Editar">
+                    </div>
+
+                </form>
 
                 {% if messages %}
                 {% for message in messages %}
