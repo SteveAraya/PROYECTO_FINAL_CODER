@@ -7,6 +7,9 @@
 ## Estudiantes:
     Adrián Figueroa.
     Adelso Steve Araya Solórzano.
+    
+## Video del proyecto:
+https://drive.google.com/drive/folders/1p-L1bmLWE0f0f8Hve8H_3lbk66bEv2RG?usp=sharing
 
 ## Tareas realizadas por cada itegrante:
 ### Adrián Figueroa:
