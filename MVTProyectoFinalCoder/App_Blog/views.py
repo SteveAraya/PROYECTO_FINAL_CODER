@@ -1,16 +1,18 @@
-from django.shortcuts import render, redirect
-
-from .models import Post
-from django.db.models import Q
-from .forms import PostForm
-from django.contrib import messages
-from django.views.generic import DeleteView, UpdateView
+from django.shortcuts      import render, redirect
+from .models               import Post
+from django.db.models      import Q
+from .forms                import PostForm
+from django.contrib        import messages
+from django.views.generic  import DeleteView, UpdateView
 from django.core.paginator import Paginator
-from App_Register.models import Avatar
+from App_Register.models   import Avatar
+
+from django.utils.decorators        import method_decorator
 from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
-#@method_decorator(login_required, name='dispatch')
+@method_decorator(login_required, name='dispatch')
 def PostCreate(request):
     print('method:',request.method)
     if(request.method=="POST"):
@@ -39,7 +41,7 @@ def PostCreate(request):
     except:
         return render(request, "PostCreate.html")
 
-@login_required
+@method_decorator(login_required, name='dispatch')
 def PostTable(request):
     posts     = Post.objects.all()
     contexto = {"posts": posts}
@@ -50,14 +52,14 @@ def PostTable(request):
     except:
         return render(request, "PostTable.html", contexto)
 
-#@method_decorator(login_required, name='dispatch')
+@method_decorator(login_required, name='dispatch')
 class PostDelete(DeleteView):
 
     model         = Post
     template_name = "PostDelete.html"
     success_url   = "/blog/table"
 
-#@method_decorator(login_required, name='dispatch')
+@method_decorator(login_required, name='dispatch')
 class PostUpdate(UpdateView):
 
     model         = Post

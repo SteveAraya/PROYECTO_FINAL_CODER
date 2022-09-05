@@ -1,13 +1,11 @@
-from django.shortcuts import render, redirect
-
-from django.contrib.auth import authenticate, login, logout
+from django.shortcuts           import render, redirect
+from django.contrib.auth        import authenticate, login, logout
+from django.contrib             import messages
+from App_Login.forms            import LoginForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.decorators import login_required
+
+from django.contrib.auth.decorators        import login_required
 from django.contrib.admin.views.decorators import staff_member_required
-
-from django.contrib import messages
-
-from App_Login.forms import LoginForm
 
 
 def Login(request):

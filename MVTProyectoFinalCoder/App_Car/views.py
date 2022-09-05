@@ -1,22 +1,19 @@
-from django.shortcuts import render, redirect
-from django.db.models import Q
+from django.shortcuts      import render, redirect
+from django.db.models      import Q
 from django.core.paginator import Paginator
-from .forms import CarForm
-from .models import Car
-from django.contrib import messages
+from .forms                import CarForm
+from .models               import Car
+from django.contrib        import messages
+from App_Register.models   import Avatar
+from django.views.generic  import DeleteView, UpdateView
 
-from App_Register.models import Avatar
+from django.utils.decorators        import method_decorator
+from django.contrib.auth.decorators import login_required
 
-# from django.utils.decorators        import method_decorator
-# from django.contrib.auth.decorators import login_required
-
-from django.views.generic import DeleteView, UpdateView
-
-#NUEVA VERSION
 # Create your views here.
 
 #Vista para la creación de vehículos (solo administradores)
-#@method_decorator(login_required, name='dispatch')
+@method_decorator(login_required, name='dispatch')
 def CarCreate(request):
 
     if(request.method=="POST"):
@@ -55,7 +52,7 @@ def CarCreate(request):
         return render(request, "CarCreate.html", {"carformulario":carformulario})
 
 #Vista para ver una tabla con todos los vehículos de la base de datos (solo administradores)
-#@method_decorator(login_required, name='dispatch')
+@method_decorator(login_required, name='dispatch')
 def CarTable(request):
     cars     = Car.objects.all()
     contexto = {"cars": cars}
@@ -66,13 +63,13 @@ def CarTable(request):
     except:
         return render(request, "CarTable.html", contexto)
 
-#@method_decorator(login_required, name='dispatch')
+@method_decorator(login_required, name='dispatch')
 class CarDelete(DeleteView):
     model         = Car
     template_name = "CarDelete.html"
     success_url   = "/car/table"
 
-#@method_decorator(login_required, name='dispatch')
+@method_decorator(login_required, name='dispatch')
 class CarUpdate(UpdateView):
     model         = Car
     template_name = "CarEdit.html"

@@ -1,16 +1,13 @@
 from django.shortcuts       import render
-
 from django.views.generic   import ListView, DeleteView, CreateView, UpdateView, DetailView
-
 from App_Office.models      import Office
 from App_Car.models         import Car
 from App_Reservation.models import Reservation
 from App_Reservation.forms  import ReservationForm
+from django.contrib         import messages
 
 from django.utils.decorators        import method_decorator
 from django.contrib.auth.decorators import login_required
-
-from django.contrib         import messages
 
 # Create your views here.
 
