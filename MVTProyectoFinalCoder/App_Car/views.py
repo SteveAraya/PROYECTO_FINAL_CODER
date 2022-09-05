@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 #Vista para la creación de vehículos (solo administradores)
-@method_decorator(login_required, name='dispatch')
+# @method_decorator(login_required, name='dispatch')
 def CarCreate(request):
 
     if(request.method=="POST"):
@@ -52,7 +52,7 @@ def CarCreate(request):
         return render(request, "CarCreate.html", {"carformulario":carformulario})
 
 #Vista para ver una tabla con todos los vehículos de la base de datos (solo administradores)
-@method_decorator(login_required, name='dispatch')
+# @method_decorator(login_required, name='dispatch')
 def CarTable(request):
     cars     = Car.objects.all()
     contexto = {"cars": cars}

@@ -15,7 +15,7 @@ from django.utils.decorators        import method_decorator
 
 # Create your views here.
 
-@method_decorator(login_required, name='dispatch')
+# @method_decorator(login_required, name='dispatch')
 def Register(request):
 
     if request.method == 'POST':
@@ -44,7 +44,7 @@ def Register(request):
     except:
         return render(request, "Register.html", {"registerForm": form})
     
-@method_decorator(login_required, name='dispatch')
+# @method_decorator(login_required, name='dispatch')
 def UserEdit(request):
     usuario=request.user
     if(request.method=='POST'):
@@ -66,7 +66,7 @@ def UserEdit(request):
     except:
         return render(request, "UserEdit.html", {"userform": userform})
 
-@method_decorator(login_required, name='dispatch')
+# @method_decorator(login_required, name='dispatch')
 def AddAvatar(request):
     if(request.method=='POST'):
 

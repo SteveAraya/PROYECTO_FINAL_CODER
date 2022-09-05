@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-@method_decorator(login_required, name='dispatch')
+# @method_decorator(login_required, name='dispatch')
 def PostCreate(request):
     print('method:',request.method)
     if(request.method=="POST"):
@@ -41,7 +41,7 @@ def PostCreate(request):
     except:
         return render(request, "PostCreate.html")
 
-@method_decorator(login_required, name='dispatch')
+# @method_decorator(login_required, name='dispatch')
 def PostTable(request):
     posts     = Post.objects.all()
     contexto = {"posts": posts}
